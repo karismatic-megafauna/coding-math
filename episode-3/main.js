@@ -4,19 +4,25 @@ window.onload = function() {
     width = canvas.width = window.innerWidth,
     height = canvas.height = window.innerHeight;
  
-  context.translate(0, height / 2);
-  context.scale(1,-1);
-  
-  for( var angle = 0; angle < Math.PI * 2; angle += .01) {
-    var x = angle * 200,
-        y = Math.sin(angle) * 200;
+  var centerY = height * .5,
+      centerX = width * .5,
+      base = 100,
+      offset = 50,
+      speed = 0.011,
+      angle = 0;
 
-    context.fillStyle = 'black';
-    context.fillRect(x, y, 5, 5);
+  render();
 
-    y = Math.cos(angle) * 200;
-    context.fillStyle = 'red';
-    context.fillRect(x, y, 5, 5);
+  function render() {
+    var radius = base + Math.sin(angle) * offset;
+
+    context.clearRect(0, 0, width, height);
+    context.beginPath();
+    context.arc(centerX, centerY, radius, 0, Math.PI * 2, false);
+    context.fill();
+
+    angle += speed;
+
+    requestAnimationFrame(render);
   }
-
 };

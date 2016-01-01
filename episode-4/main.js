@@ -3,25 +3,26 @@ window.onload = function() {
     context = canvas.getContext('2d'),
     width = canvas.width = window.innerWidth,
     height = canvas.height = window.innerHeight;
- 
-  var centerY = height * .5,
-      centerX = width * .5,
-      offset = height * .4,
-      speed = 0.111,
-      angle = 0;
+
+  var centerY = height / 2,
+      centerX = width / 2,
+      radius = 200,
+      speed = 0.01,
+      angle = 0,
+      x, y;
 
   render();
 
   function render() {
-    var x = centerX + Math.sin(angle) * offset;
-
     context.clearRect(0, 0, width, height);
+    x = centerX + Math.cos(angle) * radius;
+    y = centerY + Math.sin(angle) * radius;
     context.beginPath();
-    context.arc(x, centerY, 50, 0, Math.PI * 2, false);
+    context.arc(x, y, 20, 0, Math.PI * 2, false);
+    context.arc(centerX, centerY, 40, 0, Math.PI * 2, false);
     context.fill();
 
     angle += speed;
-
     requestAnimationFrame(render);
   }
 };

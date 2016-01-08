@@ -20,4 +20,3 @@ console.log(v4.getX(), v4.getY());
 var v5 = v1.multiply(2);
 console.log('Multiplication works:');
 console.log(v5.getX(), v5.getY());
-

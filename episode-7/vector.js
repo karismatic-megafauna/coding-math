@@ -6,6 +6,7 @@ var vector = {
     var obj = Object.create(this);
     obj.setX(x);
     obj.setY(y);
+    return obj;
   },
 
   setX: function(value) {

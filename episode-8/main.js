@@ -4,7 +4,7 @@ window.onload = function() {
   var width = canvas.width = window.innerWidth;
   var height = canvas.height = window.innerHeight;
   var particles = [];
-  numParticles = 100;
+  var numParticles = 100;
 
   for( var i = 0; i < numParticles; i++){
     particles.push(particle.create(width/2,height/2,Math.random()* 4 +1, Math.random() * Math.PI * 2));

@@ -13,7 +13,7 @@ var vector = {
     this._x = value;
   },
 
-  getX: function(value) {
+  getX: function() {
     return this._x;
   },
   
@@ -21,7 +21,7 @@ var vector = {
     this._y = value;
   },
 
-  getY: function(value) {
+  getY: function() {
     return this._y;
   },
 
@@ -42,7 +42,7 @@ var vector = {
   },
 
   getLength: function() {
-    return (this._x * this._x + this._y * this._y);
+    return Math.sqrt(this._x * this._x + this._y * this._y);
   },
 
   add: function(v2) { 

@@ -1,0 +1,25 @@
+{
+  "name": "coding-math",
+  "version": "1.0.0",
+  "description": "Math, physics and javascript!",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelghinrichs/coding-math.git"
+  },
+  "keywords": [
+    "coding",
+    "math",
+    "physics",
+    "javascript"
+  ],
+  "author": "Michael G Hinrichs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michaelghinrichs/coding-math/issues"
+  },
+  "homepage": "https://github.com/michaelghinrichs/coding-math#readme"
+}

@@ -21,7 +21,7 @@ const render = () => {
 
     angle += speed;
 
-    requestAnimationFrame(render);
+    requestAnimationFrame(draw);
   }
 
   draw();

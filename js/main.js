@@ -6,17 +6,13 @@ import Demo3 from './episode-3/main';
 const main = document.querySelector('#main');
 const sidebar = document.querySelector('#sidebar');
 
-let currentComponentName = 'demo1';
-
 const components = {
   'demo1': Demo1,
   'demo2': Demo2,
   'demo3': Demo3,
 };
 
-function render() {
-  components[currentComponentName]();
-}
+let currentComponentName = 'demo1';
 
 const linkClick = e => {
   currentComponentName = e.target.dataset.component;
@@ -31,5 +27,8 @@ const sidebarLinks = Object.keys(components).map( name => {
   return sidebar.appendChild(link);
 });
 
+function render() {
+  components[currentComponentName]();
+}
 
 render();

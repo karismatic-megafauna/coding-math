@@ -1,9 +1,9 @@
-var particle = {
+let particle = {
   position: null,
   velocity: null,
   gravity: null,
 
-  create: function(x,y,speed,direction, grav) {
+  create(x, y, speed, direction, grav) {
     var obj = Object.create(this);
     obj.position = vector.create(x,y);
     obj.velocity = vector.create(0,0);
@@ -13,12 +13,12 @@ var particle = {
     return obj;
   },
 
-  accelerate: function(accel){
+  accelerate(accel) {
     this.velocity.addTo(accel);
   },
 
-  update: function() { 
+  update() {
     this.velocity.addTo(this.gravity);
     this.position.addTo(this.velocity);
-  }
-}
+  },
+};

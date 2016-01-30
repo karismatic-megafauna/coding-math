@@ -8,7 +8,8 @@ const sidebar = document.querySelector('#sidebar');
 const components = {
   'demo1': Demo1,
   'demo2': Demo2,
-}
+};
+
 let currentComponentName = 'demo1';
 
 const linkClick = e => {
@@ -22,7 +23,7 @@ const sidebarLinks = Object.keys(components).map( name => {
   link.innerHTML = name;
   link.onclick = linkClick;
   return sidebar.appendChild(link);
-})
+});
 
 function render() {
   components[currentComponentName]();

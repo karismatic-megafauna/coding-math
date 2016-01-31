@@ -48,6 +48,7 @@ export let vector = {
   add(val) {
     return vector.create(this._x + val.getX(), this._y + val.getY());
   },
+
   subtract(val) {
     return vector.create(this._x - val.getX(), this._y - val.getY());
   },

@@ -1,9 +1,9 @@
-export let vector = {
+export const vector = {
   _x: 1,
   _y: 0,
 
   create(x, y) {
-    let obj = Object.create(this);
+    const obj = Object.create(this);
     obj.setX(x);
     obj.setY(y);
     return obj;

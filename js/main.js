@@ -6,6 +6,7 @@ import { circleOfCircles } from './episode-4/main';
 import { pointAtMouse } from './episode-5/main';
 import { vectorLib } from './episode-7/main';
 import { bigBang } from './episode-8/main';
+import { particleMove, fireWorks } from './episode-9/main';
 
 const sidebar = document.querySelector('#sidebar');
 
@@ -17,6 +18,8 @@ const components = {
   'Point at mouse': pointAtMouse,
   'Vector Lib': vectorLib,
   'Big Bang': bigBang,
+  'Particle Move': particleMove,
+  'Fireworks': fireWorks,
 };
 
 let currentSwitcher = { };

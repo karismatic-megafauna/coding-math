@@ -18,7 +18,7 @@ export function vectorLib() {
       const height = canvas.height = window.innerHeight;
       const vert = [];
       let count = 0;
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < 18; i++) {
         vert[i] = count;
         count = count + 25;
       }

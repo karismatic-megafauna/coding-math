@@ -16,7 +16,7 @@ https://github.com/bit101/codingmath
 Implement this API
 
 ```js
- Idea for setUp / tearDown API
+ // Idea for setUp / tearDown API
 
  const thing = {
    setUp:() =>  {

@@ -1,14 +1,15 @@
-window.onload = function() {
-  var canvas = document.getElementById('canvas'),
-    context = canvas.getContext('2d'),
-    width = canvas.width = window.innerWidth,
-    height = canvas.height = window.innerHeight,
-    arrowX = width / 2,
-    arrowY = height / 2,
-    dx, dy,
-    angle = 0;
+export function pointAtMouse(switcher) {
+  return () => {
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+    const width = canvas.width = window.innerWidth;
+    const height = canvas.height = window.innerHeight;
+    const arrowX = width / 2;
+    const arrowY = height / 2;
+    let dx = 0;
+    let dy = 0;
+    let angle = 0;
 
-    render();
 
     function render() {
       context.clearRect(0, 0, width, height);
@@ -19,24 +20,26 @@ window.onload = function() {
 
       // DRAW THE ARROW
       context.beginPath();
-      context.moveTo(20,0);
-      context.lineTo(-20,0);
-      context.moveTo(20,0);
-      context.lineTo(10,-10);
-      context.moveTo(20,0);
-      context.lineTo(10,10);
+      context.moveTo(20, 0);
+      context.lineTo(-20, 0);
+      context.moveTo(20, 0);
+      context.lineTo(10, -10);
+      context.moveTo(20, 0);
+      context.lineTo(10, 10);
       context.stroke();
 
       context.restore();
-      requestAnimationFrame(render);
-      console.log('Bitches ', angle);
+      if (switcher.on) {
+        requestAnimationFrame(render);
+      }
     }
 
-    document.body.addEventListener("mousemove", function(event){
+    render();
+
+    document.body.addEventListener('mousemove', (event) => {
       dx = event.clientX - arrowX;
       dy = event.clientY - arrowY;
-      angle = Math.atan2(dy , dx);
+      angle = Math.atan2(dy, dx);
     });
-  
-
-};
+  };
+}

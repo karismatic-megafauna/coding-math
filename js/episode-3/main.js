@@ -1,3 +1,5 @@
+// Idea for setUp / tearDown API
+//
 // const thing = {
 //   setUp:() =>  {
 //     // do setup things

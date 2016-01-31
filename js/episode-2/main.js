@@ -1,22 +1,29 @@
-const render = () => {
-  const canvas = document.getElementById('canvas');
-  const context = canvas.getContext('2d');
-  const height = canvas.height = window.innerHeight;
+export function sinAndCos() {
+  return () => {
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+    const height = canvas.height = window.innerHeight;
+    const randNum = (Math.floor(Math.random() * 300) + 100);
 
-  context.translate(0, height / 2);
-  context.scale(1, -1);
+    context.translate(0, height / 2);
+    context.scale(1, -1);
 
-  for (let angle = 0; angle < Math.PI * 2; angle += 0.01) {
-    const x = angle * 200;
-    let y = Math.sin(angle) * 200;
+    for (let angle = 0; angle < Math.PI * 2; angle += 0.01) {
+      // Some fun randoms!
+      // const x = angle * (Math.floor(Math.random() * 300) + 100);
+      // const x = angle * Math.random() * 300;
+      const x = angle * 300;
+      let y = 0;
 
-    context.fillStyle = 'black';
-    context.fillRect(x, y, 5, 5);
+      // create Sin
+      y = Math.sin(angle) * randNum;
+      context.fillStyle = 'black';
+      context.fillRect(x, y, 5, 5);
 
-    y = Math.cos(angle) * 200;
-    context.fillStyle = 'red';
-    context.fillRect(x, y, 5, 5);
-  }
-};
-
-export default render;
+      // create Cos
+      y = Math.cos(angle) * randNum;
+      context.fillStyle = 'red';
+      context.fillRect(x, y, 5, 5);
+    }
+  };
+}

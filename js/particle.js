@@ -1,12 +1,14 @@
-let particle = {
+import { vector } from './vector';
+
+export const particle = {
   position: null,
   velocity: null,
   gravity: null,
 
   create(x, y, speed, direction, grav) {
     var obj = Object.create(this);
-    obj.position = vector.create(x,y);
-    obj.velocity = vector.create(0,0);
+    obj.position = vector.create(x, y);
+    obj.velocity = vector.create(0, 0);
     obj.velocity.setLength(speed);
     obj.velocity.setAngle(direction);
     obj.gravity = vector.create(0, grav || 0);

@@ -5,6 +5,7 @@ import { growingCircle } from './episode-3/main';
 import { circleOfCircles } from './episode-4/main';
 import { pointAtMouse } from './episode-5/main';
 import { vectorLib } from './episode-7/main';
+import { reName } from './episode-8/main';
 
 const sidebar = document.querySelector('#sidebar');
 
@@ -15,6 +16,7 @@ const components = {
   'Circle of Circles': circleOfCircles,
   'Point at mouse': pointAtMouse,
   'Vector Lib': vectorLib,
+  'Rename': reName,
 };
 
 let currentSwitcher = { };

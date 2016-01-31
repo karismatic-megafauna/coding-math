@@ -1,6 +1,6 @@
 import { particle } from '../particle';
 
-export function reName(switcher) {
+export function bigBang(switcher) {
   return () => {
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');

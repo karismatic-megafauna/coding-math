@@ -1,24 +1,28 @@
-window.onload = function() {
-  var canvas = document.getElementById('canvas'),
-    context = canvas.getContext('2d'),
-    width = canvas.width = window.innerWidth,
-    height = canvas.height = window.innerHeight;
+export function circleOfCircles() {
+  return () => {
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+    const width = canvas.width = window.innerWidth;
+    const height = canvas.height = window.innerHeight;
+    const randNum = (Math.floor(Math.random() * 200) + 100);
+    const randNum2 = (Math.floor(Math.random() * 30) + 10);
 
-  var centerY = height / 2,
-      centerX = width / 2,
-      radius = 200,
-      speed = 0.05,
-      angle = 0,
-      numObjects = 20,
-      slice = Math.PI * 2 / numObjects,
-      x, y;
+    const centerY = height / 2;
+    const centerX = width / 2;
+    const radius = randNum;
+    const numObjects = 20;
+    const slice = Math.PI * 2 / numObjects;
+    let angle = 0;
+    let x = 0;
+    let y = 0;
 
-  for ( var i = 0; i < numObjects; i += 1 ) {
-    angle = i * slice;
-    x = centerX + Math.cos(angle) * radius;
-    y = centerY + Math.sin(angle) * radius;
-    context.beginPath();
-    context.arc(x, y, 20, 0, Math.PI * 2, false);
-    context.fill();
-  }
-};
+    for (let i = 0; i < numObjects; i += 1) {
+      angle = i * slice;
+      x = centerX + Math.cos(angle) * radius;
+      y = centerY + Math.sin(angle) * radius;
+      context.beginPath();
+      context.arc(x, y, randNum2, 0, Math.PI * 2, false);
+      context.fill();
+    }
+  };
+}

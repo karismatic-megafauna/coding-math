@@ -29,6 +29,8 @@ export const vector = {
     const length = this.getLength();
     this._x = Math.cos(angle) * length;
     this._y = Math.sin(angle) * length;
+    // console.log(`length: ${length}`);
+    // console.log(`X: ${this._x} Y: ${this._y}`);
   },
 
   getAngle() {
@@ -45,12 +47,12 @@ export const vector = {
     return Math.sqrt(this._x * this._x + this._y * this._y);
   },
 
-  add(val) {
-    return vector.create(this._x + val.getX(), this._y + val.getY());
+  add(vect) {
+    return vector.create(this._x + vect.getX(), this._y + vect.getY());
   },
 
-  subtract(val) {
-    return vector.create(this._x - val.getX(), this._y - val.getY());
+  subtract(vect) {
+    return vector.create(this._x - vect.getX(), this._y - vect.getY());
   },
 
   multiply(val) {
@@ -61,23 +63,23 @@ export const vector = {
     return vector.create(this._x / val, this._y / val);
   },
 
-  addTo(val) {
-    this._x += val.getX();
-    this._y += val.getY();
+  addTo(vect) {
+    this._x += vect.getX();
+    this._y += vect.getY();
   },
 
-  subtractFrom(val) {
-    this._x -= val.getX();
-    this._y -= val.getY();
+  subtractFrom(vect) {
+    this._x -= vect.getX();
+    this._y -= vect.getY();
   },
 
   multiplyBy(val) {
-    this._x *= val.getX();
-    this._y *= val.getY();
+    this._x *= val;
+    this._y *= val;
   },
 
   divideBy(val) {
-    this._x /= val.getX();
-    this._y /= val.getY();
+    this._x /= val;
+    this._y /= val;
   },
 };

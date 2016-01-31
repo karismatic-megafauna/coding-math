@@ -4,6 +4,7 @@ import { sinAndCos } from './episode-2/main';
 import { growingCircle } from './episode-3/main';
 import { circleOfCircles } from './episode-4/main';
 import { pointAtMouse } from './episode-5/main';
+import { vectorLib } from './episode-7/main';
 
 const sidebar = document.querySelector('#sidebar');
 
@@ -13,6 +14,7 @@ const components = {
   'Growing Circle': growingCircle,
   'Circle of Circles': circleOfCircles,
   'Point at mouse': pointAtMouse,
+  'Vector Lib': vectorLib,
 };
 
 let currentSwitcher = { };

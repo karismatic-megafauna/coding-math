@@ -26,6 +26,7 @@ describe('Vector Library', () => {
       expect(v1.getLength()).to.equal(100);
     });
   });
+
   describe('Elementary immutable vector arithmetic works', () => {
     const v1 = vector.create(5, 10);
     const v2 = vector.create(10, 5);
@@ -54,6 +55,7 @@ describe('Vector Library', () => {
       expect(result.getY()).to.equal(2);
     });
   });
+
   describe('Elementary muteable vector arithmetic works', () => {
     it('Add', () => {
       const v1 = vector.create(5, 10);

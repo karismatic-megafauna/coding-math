@@ -15,8 +15,10 @@ describe('Vector Library', () => {
     });
 
     it('sets the angle', () => {
-      // this isn't working :(
-      v1.setAngle(10);
+      const low30 = 29.5 * (Math.PI / 180);
+      const high30 = 30.5 * (Math.PI / 180);
+      v1.setAngle(Math.PI / 6);
+      expect(v1.getAngle()).to.be.within(low30, high30);
     });
 
     it('sets the length', () => {

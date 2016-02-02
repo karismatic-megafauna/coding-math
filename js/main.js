@@ -22,7 +22,7 @@ const components = {
   'Fireworks': fireWorks,
 };
 
-let currentComponentName = 'Growing Circle';
+let currentComponentName = 'Random Lines';
 
 function getComponent(componentName) {
   return components[componentName];

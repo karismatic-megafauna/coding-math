@@ -1,5 +1,8 @@
-export function sinAndCos() {
-  return () => {
+export const sinAndCos = {
+  tearDown() {
+    // nothing to do yet
+  },
+  setUp() {
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
     const height = canvas.height = window.innerHeight;
@@ -25,5 +28,5 @@ export function sinAndCos() {
       context.fillStyle = 'red';
       context.fillRect(x, y, 5, 5);
     }
-  };
-}
+  },
+};

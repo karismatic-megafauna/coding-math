@@ -1,7 +1,13 @@
 import { particle } from '../particle';
 
-export function bigBang(switcher) {
-  return () => {
+const switcher = { on: true };
+
+export const bigBang = {
+  tearDown() {
+    switcher.on = false;
+  },
+  setUp() {
+    switcher.on = true;
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
     const width = canvas.width = window.innerWidth;
@@ -36,5 +42,5 @@ export function bigBang(switcher) {
       }
     }
     update();
-  };
-}
+  },
+};

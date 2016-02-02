@@ -1,7 +1,10 @@
 import { vector } from '../vector';
 
-export function vectorLib() {
-  return () => {
+export const vectorLib = {
+  tearDown() {
+    // nothing to do yet
+  },
+  setUp() {
     const v1 = vector.create(10, 5);
     // Adding
     const v2 = vector.create(1, 2);
@@ -45,5 +48,5 @@ export function vectorLib() {
     }
 
     draw();
-  };
-}
+  },
+};

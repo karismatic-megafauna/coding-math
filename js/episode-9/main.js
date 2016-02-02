@@ -1,8 +1,15 @@
 import { vector } from '../vector';
 import { particle } from '../particle';
 
-export function particleMove(switcher) {
-  return () => {
+const switcherP = { on: false };
+const switcherF = { on: false };
+
+export const particleMove = {
+  tearDown() {
+    switcherP.on = false;
+  },
+  setUp() {
+    switcherP.on = true;
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
     const width = canvas.width = window.innerWidth;
@@ -28,17 +35,21 @@ export function particleMove(switcher) {
       );
       context.fill();
 
-      if (switcher.on) {
+      if (switcherP.on) {
         requestAnimationFrame(update);
       }
     }
 
     update();
-  };
-}
+  },
+};
 
-export function fireWorks(switcher) {
-  return () => {
+export const fireWorks = {
+  tearDown() {
+    switcherF.on = false;
+  },
+  setUp() {
+    switcherF.on = true;
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
     const width = canvas.width = window.innerWidth;
@@ -68,11 +79,11 @@ export function fireWorks(switcher) {
         context.fill();
       }
 
-      if (switcher.on) {
+      if (switcherF.on) {
         requestAnimationFrame(update);
       }
     }
 
     update();
-  };
-}
+  },
+};

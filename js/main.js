@@ -22,28 +22,23 @@ const components = {
   'Fireworks': fireWorks,
 };
 
-let currentSwitcher = { };
-let currentComponentName = 'Random Lines';
+let currentComponentName = 'Growing Circle';
 
 function getComponent(componentName) {
   return components[componentName];
 }
 
-function startComponent(componentName) {
-  const currentComponent = getComponent(componentName);
-  const switcher = { on: true };
-
-  currentComponent(switcher)();
-  currentSwitcher = switcher;
-}
-
 function render() {
-  startComponent(currentComponentName);
+  const currentComponent = getComponent(currentComponentName);
+  currentComponent.setUp();
 }
 
 const linkClick = e => {
+  const prevComp = getComponent(currentComponentName);
+  prevComp.tearDown();
+
+  // Change component name
   currentComponentName = e.target.dataset.component;
-  currentSwitcher.on = false;
   render();
 };
 

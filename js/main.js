@@ -8,6 +8,7 @@ import { vectorLib } from './episode-7/main';
 import { bigBang } from './episode-8/main';
 import { particleMove, fireWorks } from './episode-9/main';
 import { ship } from './episode-10/main';
+import { orbit } from './episode-11/main';
 
 const sidebar = document.querySelector('#sidebar');
 
@@ -22,6 +23,7 @@ const components = {
   'Particle Move': particleMove,
   'Fireworks': fireWorks,
   'Ship': ship,
+  'Orbit': orbit,
 };
 
 let currentComponentName = 'Random Lines';

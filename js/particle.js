@@ -3,6 +3,7 @@ import { vector } from './vector';
 export const particle = {
   position: null,
   velocity: null,
+  mass: null,
   gravity: null,
 
   create(x, y, speed, direction, grav) {
@@ -22,5 +23,29 @@ export const particle = {
   update() {
     this.velocity.addTo(this.gravity);
     this.position.addTo(this.velocity);
+  },
+
+  angleTo(p2) {
+    return Math.atan2(
+      p2.position.getY() - this.position.getY(),
+      p2.position.getX() - this.position.getX()
+    );
+  },
+
+  distanceTo(p2) {
+    const dx = p2.position.getX() - this.position.getX();
+    const dy = p2.position.getY() - this.position.getY();
+
+    return Math.sqrt(dx * dx + dy * dy);
+  },
+
+  gravitateTo(p2) {
+    const grav = vector.create(0, 0);
+    const dist = this.distanceTo(p2);
+
+    grav.setLength(p2.mass / (dist * dist));
+    grav.setAngle(this.angleTo(p2));
+
+    this.velocity.addTo(grav);
   },
 };

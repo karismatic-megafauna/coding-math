@@ -1,5 +1,13 @@
-export function pointAtMouse(switcher) {
-  return () => {
+const switcher = { on: true };
+let frameId;
+
+export const pointAtMouse = {
+  tearDown() {
+    switcher.on = false;
+    cancelAnimationFrame(frameId);
+  },
+  setUp() {
+    switcher.on = true;
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
     const width = canvas.width = window.innerWidth;
@@ -9,7 +17,6 @@ export function pointAtMouse(switcher) {
     let dx = 0;
     let dy = 0;
     let angle = 0;
-
 
     function render() {
       context.clearRect(0, 0, width, height);
@@ -30,7 +37,7 @@ export function pointAtMouse(switcher) {
 
       context.restore();
       if (switcher.on) {
-        requestAnimationFrame(render);
+        frameId = requestAnimationFrame(render);
       }
     }
 
@@ -41,5 +48,5 @@ export function pointAtMouse(switcher) {
       dy = event.clientY - arrowY;
       angle = Math.atan2(dy, dx);
     });
-  };
-}
+  },
+};

@@ -1,16 +1,13 @@
-// Idea for setUp / tearDown API
-//
-// const thing = {
-//   setUp:() =>  {
-//     // do setup things
-//   },
-//   tearDown: () => {
-//     // do cleanup things
-//   },
-// };
+const switcher = { on: false };
+let frameId;
 
-export function growingCircle(switcher) {
-  return () => {
+export const growingCircle = {
+  tearDown() {
+    switcher.on = false;
+    cancelAnimationFrame(frameId);
+  },
+  setUp() {
+    switcher.on = true;
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
     const width = canvas.width = window.innerWidth;
@@ -33,10 +30,10 @@ export function growingCircle(switcher) {
 
       angle += speed;
       if (switcher.on) {
-        requestAnimationFrame(draw);
+        frameId = requestAnimationFrame(draw);
       }
     }
 
     draw();
-  };
-}
+  },
+};

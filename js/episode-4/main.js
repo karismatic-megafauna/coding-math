@@ -1,5 +1,8 @@
-export function circleOfCircles() {
-  return () => {
+export const circleOfCircles = {
+  tearDown() {
+    // nothing to do yet
+  },
+  setUp() {
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
     const width = canvas.width = window.innerWidth;
@@ -24,5 +27,5 @@ export function circleOfCircles() {
       context.arc(x, y, randNum2, 0, Math.PI * 2, false);
       context.fill();
     }
-  };
-}
+  },
+};

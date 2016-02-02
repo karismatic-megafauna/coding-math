@@ -33,7 +33,14 @@ function render() {
   currentComponent.setUp();
 }
 
+function clearSidebar() {
+  let children = Array.from(sidebar.childNodes);
+  children.map(child => child.classList.remove('current'));
+}
+
 const linkClick = e => {
+  clearSidebar();
+  e.target.className += ' current';
   const prevComp = getComponent(currentComponentName);
   prevComp.tearDown();
 

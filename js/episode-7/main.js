@@ -28,23 +28,23 @@ export const vectorLib = {
       // Draw some info out ... :( this shit sucks
       context.clearRect(0, 0, width, height);
       context.font = '24px serif';
-      context.fillText('Getters:', 10, vert[1]);
-      context.fillText(`getX() = ${v1.getX()}`, 10, vert[2]);
-      context.fillText(`getY() = ${v1.getY()}`, 10, vert[3]);
-      context.fillText(`getAngle() = ${v1.getAngle()}`, 10, vert[4]);
-      context.fillText(`getLength() = ${v1.getLength()}`, 10, vert[5]);
+      context.fillText('Getters:', 200, vert[1]);
+      context.fillText(`getX() = ${v1.getX()}`, 200, vert[2]);
+      context.fillText(`getY() = ${v1.getY()}`, 200, vert[3]);
+      context.fillText(`getAngle() = ${v1.getAngle()}`, 200, vert[4]);
+      context.fillText(`getLength() = ${v1.getLength()}`, 200, vert[5]);
 
-      context.fillText('Addition: ( 10 , 5 ) + ( 1 , 2 )', 10, vert[7]);
-      context.fillText(`x = ${v3.getX()}`, 10, vert[8]);
-      context.fillText(`y = ${v3.getY()}`, 10, vert[9]);
+      context.fillText('Addition: ( 10 , 5 ) + ( 1 , 2 )', 200, vert[7]);
+      context.fillText(`x = ${v3.getX()}`, 200, vert[8]);
+      context.fillText(`y = ${v3.getY()}`, 200, vert[9]);
 
-      context.fillText('Subtraction: ( 11 , 7 ) - ( 1 , 2 )', 10, vert[11]);
-      context.fillText(`x = ${v4.getX()}`, 10, vert[12]);
-      context.fillText(`y = ${v4.getY()}`, 10, vert[13]);
+      context.fillText('Subtraction: ( 11 , 7 ) - ( 1 , 2 )', 200, vert[11]);
+      context.fillText(`x = ${v4.getX()}`, 200, vert[12]);
+      context.fillText(`y = ${v4.getY()}`, 200, vert[13]);
 
-      context.fillText('Multiplication: ( 10 , 5 ) x 2', 10, vert[15]);
-      context.fillText(`x = ${v5.getX()}`, 10, vert[16]);
-      context.fillText(`y = ${v5.getY()}`, 10, vert[17]);
+      context.fillText('Multiplication: ( 10 , 5 ) x 2', 200, vert[15]);
+      context.fillText(`x = ${v5.getX()}`, 200, vert[16]);
+      context.fillText(`y = ${v5.getY()}`, 200, vert[17]);
     }
 
     draw();

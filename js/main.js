@@ -7,6 +7,7 @@ import { pointAtMouse } from './episode-5/main';
 import { vectorLib } from './episode-7/main';
 import { bigBang } from './episode-8/main';
 import { particleMove, fireWorks } from './episode-9/main';
+import { ship } from './episode-10/main';
 
 const sidebar = document.querySelector('#sidebar');
 
@@ -20,6 +21,7 @@ const components = {
   'Big Bang': bigBang,
   'Particle Move': particleMove,
   'Fireworks': fireWorks,
+  'Ship': ship,
 };
 
 let currentComponentName = 'Random Lines';
@@ -34,7 +36,7 @@ function render() {
 }
 
 function clearSidebar() {
-  let children = Array.from(sidebar.childNodes);
+  const children = Array.from(sidebar.childNodes);
   children.map(child => child.classList.remove('current'));
 }
 

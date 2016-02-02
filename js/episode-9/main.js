@@ -1,15 +1,16 @@
 import { vector } from '../vector';
 import { particle } from '../particle';
 
-const switcherP = { on: false };
-const switcherF = { on: false };
+const switcher = { on: false };
+let frameId;
 
 export const particleMove = {
   tearDown() {
-    switcherP.on = false;
+    switcher.on = false;
+    cancelAnimationFrame(frameId);
   },
   setUp() {
-    switcherP.on = true;
+    switcher.on = true;
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
     const width = canvas.width = window.innerWidth;
@@ -35,8 +36,8 @@ export const particleMove = {
       );
       context.fill();
 
-      if (switcherP.on) {
-        requestAnimationFrame(update);
+      if (switcher.on) {
+        frameId = requestAnimationFrame(update);
       }
     }
 
@@ -46,10 +47,11 @@ export const particleMove = {
 
 export const fireWorks = {
   tearDown() {
-    switcherF.on = false;
+    switcher.on = false;
+    cancelAnimationFrame(frameId);
   },
   setUp() {
-    switcherF.on = true;
+    switcher.on = true;
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
     const width = canvas.width = window.innerWidth;
@@ -79,8 +81,8 @@ export const fireWorks = {
         context.fill();
       }
 
-      if (switcherF.on) {
-        requestAnimationFrame(update);
+      if (switcher.on) {
+        frameId = requestAnimationFrame(update);
       }
     }
 

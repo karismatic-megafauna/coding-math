@@ -1,8 +1,10 @@
 const switcher = { on: false };
+let frameId;
 
 export const growingCircle = {
   tearDown() {
     switcher.on = false;
+    cancelAnimationFrame(frameId);
   },
   setUp() {
     switcher.on = true;
@@ -28,7 +30,7 @@ export const growingCircle = {
 
       angle += speed;
       if (switcher.on) {
-        requestAnimationFrame(draw);
+        frameId = requestAnimationFrame(draw);
       }
     }
 

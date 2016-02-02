@@ -1,10 +1,12 @@
 import { particle } from '../particle';
 
 const switcher = { on: true };
+let frameId;
 
 export const bigBang = {
   tearDown() {
     switcher.on = false;
+    cancelAnimationFrame(frameId);
   },
   setUp() {
     switcher.on = true;
@@ -38,7 +40,7 @@ export const bigBang = {
       }
 
       if (switcher.on) {
-        requestAnimationFrame(update);
+        frameId = requestAnimationFrame(update);
       }
     }
     update();

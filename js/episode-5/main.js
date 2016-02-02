@@ -1,8 +1,10 @@
 const switcher = { on: true };
+let frameId;
 
 export const pointAtMouse = {
   tearDown() {
     switcher.on = false;
+    cancelAnimationFrame(frameId);
   },
   setUp() {
     switcher.on = true;
@@ -35,7 +37,7 @@ export const pointAtMouse = {
 
       context.restore();
       if (switcher.on) {
-        requestAnimationFrame(render);
+        frameId = requestAnimationFrame(render);
       }
     }
 

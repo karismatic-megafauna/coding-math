@@ -4,6 +4,7 @@ var app = express();
 
 app.get('/', function build(request, response) {
   response.sendfile(__dirname + '/build/index.html');
+  response.sendfile(__dirname + '/build/bundle.js');
 }).listen(port, function log() {
   console.log('listening on port: ', port);
 });

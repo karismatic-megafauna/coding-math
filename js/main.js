@@ -1,14 +1,14 @@
 import 'babel-polyfill';
-import { randomLines } from './episode-1/main';
-import { sinAndCos } from './episode-2/main';
-import { growingCircle } from './episode-3/main';
-import { circleOfCircles } from './episode-4/main';
-import { pointAtMouse } from './episode-5/main';
-import { vectorLib } from './episode-7/main';
-import { bigBang } from './episode-8/main';
-import { particleMove, fireWorks } from './episode-9/main';
-import { ship } from './episode-10/main';
-import { orbit } from './episode-11/main';
+import { randomLines } from './episode-1/index';
+import { sinAndCos } from './episode-2/index';
+import { growingCircle } from './episode-3/index';
+import { circleOfCircles } from './episode-4/index';
+import { pointAtMouse } from './episode-5/index';
+import { vectorLib } from './episode-7/index';
+import { bigBang } from './episode-8/index';
+import { particleMove, fireWorks } from './episode-9/index';
+import { ship } from './episode-10/index';
+import { orbit } from './episode-11/index';
 
 const sidebar = document.querySelector('#sidebar');
 

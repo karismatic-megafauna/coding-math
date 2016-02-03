@@ -1,6 +1,9 @@
 {
   "name": "coding-math",
   "version": "1.0.0",
+  "engines": {
+    "node": "5.2.0"
+  },
   "description": "Math, physics and javascript!",
   "main": "app.js",
   "scripts": {

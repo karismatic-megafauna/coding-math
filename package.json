@@ -7,7 +7,8 @@
     "test": "mocha --ui qunit --compilers js:babel-core/register",
     "build": "webpack",
     "watch": "webpack --watch",
-    "start": "webpack-dev-server --hot --inline"
+    "dev": "webpack-dev-server --hot --inline",
+    "start": "npm run build && node app.js"
   },
   "repository": {
     "type": "git",
@@ -40,5 +41,8 @@
     "presets": [
       "es2015"
     ]
+  },
+  "dependencies": {
+    "express": "^4.13.4"
   }
 }

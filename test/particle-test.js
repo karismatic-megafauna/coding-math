@@ -31,8 +31,6 @@ describe('Particle Library', () => {
     });
   });
   describe('Particle mutations', () => {
-    // Methods to test:
-    // accelerate(accel) {
     it('increases the velocity by a specified amount', () => {
       const p1 = particle.create(4, 4, 30, Math.PI / 6, 20);
       const v2 = vector.create(10, 5);
@@ -44,12 +42,42 @@ describe('Particle Library', () => {
       expect(originalX + 10).to.eql(p1.velocity.getX());
       expect(originalY + 5).to.eql(p1.velocity.getY());
     });
-    // update() {
-    // angleTo(p2) {
+    it('gets the angle between two particles', () => {
+      const p1 = particle.create(4, 4, 30, Math.PI / 6, 20);
+      const p2 = particle.create(2, 2, 15, Math.PI / 3, 10);
+
+      const resultAngle = p1.angleTo(p2);
+
+      const y = p2.position.getY() - p1.position.getY();
+      const x = p2.position.getX() - p1.position.getX();
+
+      const expectedAngle = Math.atan2(y, x);
+
+      expect(resultAngle).to.equal(expectedAngle);
+    });
+    it('updates the velocity and position with gravity', () => {
+      const p1 = particle.create(4, 4, 30, Math.PI / 6, 20);
+      const originalXVel = p1.velocity.getX();
+      const originalYVel = p1.velocity.getY();
+      const originalXPos = p1.position.getX();
+      const originalYPos = p1.position.getY();
+      const gravX = p1.gravity.getX();
+      const gravY = p1.gravity.getY();
+      // mutate p1
+      p1.update();
+      const updatedXVel = p1.velocity.getX();
+      const updatedYVel = p1.velocity.getY();
+      const updatedXPos = p1.position.getX();
+      const updatedYPos = p1.position.getY();
+
+      expect(originalXVel + gravX).to.equal(updatedXVel);
+      expect(originalYVel + gravY).to.equal(updatedYVel);
+
+      expect(originalXPos + originalXVel + gravX).to.equal(updatedXPos);
+      expect(originalYPos + originalYVel + gravY).to.equal(updatedYPos);
+    });
     // distanceTo(p2) {
     // gravitateTo(p2) {
-    it('updates the velocity and position');
-    it('gets the angle between two particles');
     it('gets the distance between two particles');
     it('calculates the gravity between two objects');
     it('applies the calcualted gravity to an obj');

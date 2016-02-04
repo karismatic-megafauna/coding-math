@@ -1,7 +1,11 @@
-# All the code for the examples I have done lives here:
+## Physics in the Javascripts!!!
+
+[![Circle CI](https://circleci.com/gh/michaelghinrichs/coding-math.svg?style=svg)](https://circleci.com/gh/michaelghinrichs/coding-math)
+
+### All the code for the examples I have done lives here:
 https://coding-math.herokuapp.com/
 
-# His website with all the videos
+### His website with all the videos
 www.codingmath.com
 
 This is a repo that explores these amazing videos

@@ -46,14 +46,27 @@ describe('Particle Library', () => {
       const p1 = particle.create(4, 4, 30, Math.PI / 6, 20);
       const p2 = particle.create(2, 2, 15, Math.PI / 3, 10);
 
-      const resultAngle = p1.angleTo(p2);
+      const result = p1.angleTo(p2);
 
       const y = p2.position.getY() - p1.position.getY();
       const x = p2.position.getX() - p1.position.getX();
 
-      const expectedAngle = Math.atan2(y, x);
+      const expected = Math.atan2(y, x);
 
-      expect(resultAngle).to.equal(expectedAngle);
+      expect(result).to.equal(expected);
+    });
+    it('gets the distance between two particles', () => {
+      const p1 = particle.create(4, 4, 30, Math.PI / 6, 20);
+      const p2 = particle.create(2, 2, 15, Math.PI / 3, 10);
+
+      const result = p1.distanceTo(p2);
+
+      const y = p2.position.getY() - p1.position.getY();
+      const x = p2.position.getX() - p1.position.getX();
+
+      const expected = Math.sqrt((x * x) + (y * y));
+
+      expect(result).to.equal(expected);
     });
     it('updates the velocity and position with gravity', () => {
       const p1 = particle.create(4, 4, 30, Math.PI / 6, 20);
@@ -76,9 +89,7 @@ describe('Particle Library', () => {
       expect(originalXPos + originalXVel + gravX).to.equal(updatedXPos);
       expect(originalYPos + originalYVel + gravY).to.equal(updatedYPos);
     });
-    // distanceTo(p2) {
     // gravitateTo(p2) {
-    it('gets the distance between two particles');
     it('calculates the gravity between two objects');
     it('applies the calcualted gravity to an obj');
   });

@@ -34,13 +34,13 @@ describe('Particle Library', () => {
     it('increases the velocity by a specified amount', () => {
       const p1 = particle.create(4, 4, 30, Math.PI / 6, 20);
       const v2 = vector.create(10, 5);
-      const originalX = p1.velocity.getX();
-      const originalY = p1.velocity.getY();
+      const initialX = p1.velocity.getX();
+      const initialY = p1.velocity.getY();
       // mutate p1
       p1.accelerate(v2);
 
-      expect(originalX + 10).to.eql(p1.velocity.getX());
-      expect(originalY + 5).to.eql(p1.velocity.getY());
+      expect(initialX + 10).to.eql(p1.velocity.getX());
+      expect(initialY + 5).to.eql(p1.velocity.getY());
     });
     it('gets the angle between two particles', () => {
       const p1 = particle.create(4, 4, 30, Math.PI / 6, 20);
@@ -70,33 +70,40 @@ describe('Particle Library', () => {
     });
     it('updates the velocity and position with gravity', () => {
       const p1 = particle.create(4, 4, 30, Math.PI / 6, 20);
-      const originalXVel = p1.velocity.getX();
-      const originalYVel = p1.velocity.getY();
-      const originalXPos = p1.position.getX();
-      const originalYPos = p1.position.getY();
+      const initialXVel = p1.velocity.getX();
+      const initialYVel = p1.velocity.getY();
+      const initialXPos = p1.position.getX();
+      const initialYPos = p1.position.getY();
       const gravX = p1.gravity.getX();
       const gravY = p1.gravity.getY();
       // mutate p1
       p1.update();
-      const updatedXVel = p1.velocity.getX();
-      const updatedYVel = p1.velocity.getY();
-      const updatedXPos = p1.position.getX();
-      const updatedYPos = p1.position.getY();
+      const resultXVel = p1.velocity.getX();
+      const resultYVel = p1.velocity.getY();
+      const resultXPos = p1.position.getX();
+      const resultYPos = p1.position.getY();
 
-      expect(originalXVel + gravX).to.equal(updatedXVel);
-      expect(originalYVel + gravY).to.equal(updatedYVel);
+      expect(initialXVel + gravX).to.equal(resultXVel);
+      expect(initialYVel + gravY).to.equal(resultYVel);
 
-      expect(originalXPos + originalXVel + gravX).to.equal(updatedXPos);
-      expect(originalYPos + originalYVel + gravY).to.equal(updatedYPos);
+      expect(initialXPos + initialXVel + gravX).to.equal(resultXPos);
+      expect(initialYPos + initialYVel + gravY).to.equal(resultYPos);
     });
     it('creates and applies gravity to this particle', () => {
       const earth = particle.create(4, 4, 10, Math.PI / 6);
       const sun = particle.create(10, 10, 515, Math.PI / 3);
+      const earthinitialXVel = earth.velocity.getX();
       sun.mass = 2000;
 
-      console.log(earth);
       earth.gravitateTo(sun);
-      console.log(earth);
+      const earthresultXVel = earth.velocity.getX();
+
+      // note, the above and below only works because the initial value
+      // is starting out the earth with no X and all Y.
+      // In a quarter of a circle, this test would fail as X would decrease
+      // and Y would increase...that is to say, this test depends HEAVILY
+      // on the initial start points
+      expect(earthresultXVel).to.be.above(earthinitialXVel);
     });
   });
 });

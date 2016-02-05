@@ -17,14 +17,17 @@ export const orbit = {
     const sun = particle.create(width / 2, height / 2, 0, 0);
     const planet = particle.create(width / 2 + 200, height / 2, 10, -Math.PI / 2);
 
-    // sun.mass = 20000;
-
-    update();
+    sun.mass = 20000;
 
     function update() {
       context.clearRect(0, 0, width, height);
 
-      planet.gravitateTo(sun);
+      try {
+        planet.gravitateTo(sun);
+      } catch (e) {
+        console.error(e);
+        return;
+      }
       planet.update();
 
       context.beginPath();
@@ -41,5 +44,7 @@ export const orbit = {
         frameId = requestAnimationFrame(update);
       }
     }
+
+    update();
   },
 };

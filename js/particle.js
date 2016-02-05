@@ -41,8 +41,7 @@ export const particle = {
 
   gravitateTo(p2) {
     if (!p2.mass) {
-      console.error('In function gravitateTo(p2), p2 has no mass');
-      console.error('Fix: p2.mass = largeInterger');
+      throw new Error(`mass of input obj undefined in gravitateTo(p2)`);
     }
 
     const grav = vector.create(0, 0);

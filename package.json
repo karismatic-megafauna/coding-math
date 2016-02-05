@@ -8,8 +8,8 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha --ui qunit --compilers js:babel-core/register",
+    "watch": "mocha --ui qunit --compilers js:babel-core/register --watch",
     "build": "NODE_ENV=production webpack",
-    "watch": "webpack --watch",
     "dev": "webpack-dev-server --hot --inline",
     "start": "npm run build && node app.js"
   },

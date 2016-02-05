@@ -40,6 +40,11 @@ export const particle = {
   },
 
   gravitateTo(p2) {
+    if (!p2.mass) {
+      console.error('In function gravitateTo(p2), p2 has no mass');
+      console.error('Fix: p2.mass = largeInterger');
+    }
+
     const grav = vector.create(0, 0);
     const dist = this.distanceTo(p2);
 

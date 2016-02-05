@@ -89,8 +89,14 @@ describe('Particle Library', () => {
       expect(originalXPos + originalXVel + gravX).to.equal(updatedXPos);
       expect(originalYPos + originalYVel + gravY).to.equal(updatedYPos);
     });
-    // gravitateTo(p2) {
-    it('calculates the gravity between two objects');
-    it('applies the calcualted gravity to an obj');
+    it('creates and applies gravity to this particle', () => {
+      const earth = particle.create(4, 4, 10, Math.PI / 6);
+      const sun = particle.create(10, 10, 515, Math.PI / 3);
+      sun.mass = 2000;
+
+      console.log(earth);
+      earth.gravitateTo(sun);
+      console.log(earth);
+    });
   });
 });

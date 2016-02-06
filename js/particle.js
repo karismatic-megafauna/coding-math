@@ -6,6 +6,7 @@ export const particle = {
   mass: null,
   gravity: null,
   radius: null,
+  bounce: -1,
   color: null,
 
   create(x, y, speed, direction, grav) {

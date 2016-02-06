@@ -1,4 +1,3 @@
-// TODO: optimize with episode-12 partical removal
 import { removeDeadParticles } from '../utils';
 import { particle } from '../particle';
 

@@ -42,8 +42,6 @@ export const fountain = {
     const height = canvas.height = window.innerHeight;
     const particles = [];
 
-
-
     function update() {
       context.clearRect(0, 0, width, height);
 
@@ -81,6 +79,8 @@ export const fountain = {
         }
       }
 
+      context.font = '24px serif';
+      context.fillText(`particles on page: ${particles.length}`, 200, 50);
       if (switcher.on && particles.length) {
         frameId = requestAnimationFrame(update);
       }

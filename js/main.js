@@ -3,12 +3,11 @@ import { randomLines } from './episode-1/index';
 import { sinAndCos } from './episode-2/index';
 import { growingCircle } from './episode-3/index';
 import { circleOfCircles } from './episode-4/index';
-import { pointAtMouse } from './episode-5/index';
-import { vectorLib } from './episode-7/index';
 import { bigBang } from './episode-8/index';
-import { particleMove, fireWorks } from './episode-9/index';
+import { fireWorks } from './episode-9/index';
 import { ship } from './episode-10/index';
 import { orbit } from './episode-11/index';
+import { bounceyBall, fountain } from './episode-12/index';
 
 const sidebar = document.querySelector('#sidebar');
 
@@ -17,13 +16,12 @@ const components = {
   'Sin and Cos': sinAndCos,
   'Growing Circle': growingCircle,
   'Circle of Circles': circleOfCircles,
-  'Point at mouse': pointAtMouse,
-  'Vector Lib': vectorLib,
   'Big Bang': bigBang,
-  'Particle Move': particleMove,
   'Fireworks': fireWorks,
   'Ship': ship,
   'Orbit': orbit,
+  'Bouncy Ball': bounceyBall,
+  'Fountain': fountain,
 };
 
 let currentComponentName = 'Random Lines';

@@ -1,3 +1,4 @@
+// TODO: optimize with episode-12 partical removal
 import { particle } from '../particle';
 
 const switcher = { on: true };

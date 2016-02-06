@@ -1,3 +1,4 @@
+// TODO: animate in an interesting way or remove
 export const sinAndCos = {
   tearDown() {
     // nothing to do yet

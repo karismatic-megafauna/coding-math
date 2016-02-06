@@ -40,7 +40,7 @@ export const fireWorks = {
         context.fill();
       }
 
-      removeDeadParticles(particles, width, height);
+      particles = removeDeadParticles(particles, width, height);
       context.font = '24px serif';
       context.fillText(`particles on page: ${particles.length}`, 200, 50);
       if (switcher.on && particles.length) {

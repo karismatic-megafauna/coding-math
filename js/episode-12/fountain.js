@@ -1,34 +1,9 @@
-// TODO: Implement
-import { vector } from '../vector';
+// TODO: Rename me to fountain.js
 import { particle } from '../particle';
 import { getRandomInt } from '../utils';
 
 const switcher = { on: false };
 let frameId;
-export const bounceyBall = {
-  tearDown() {
-    switcher.on = false;
-    cancelAnimationFrame(frameId);
-  },
-  setUp() {
-    switcher.on = true;
-    const canvas = document.getElementById('canvas');
-    const context = canvas.getContext('2d');
-    const width = canvas.width = window.innerWidth;
-    const height = canvas.height = window.innerHeight;
-
-    function update() {
-      context.clearRect(0, 0, width, height);
-
-      if (switcher.on) {
-        frameId = requestAnimationFrame(update);
-      }
-    }
-
-    update();
-  },
-};
-
 export const fountain = {
   tearDown() {
     switcher.on = false;
@@ -56,7 +31,7 @@ export const fountain = {
         p.radius = Math.random() * 10 + 2;
         p.color = {
           b: getRandomInt(100, 255),
-          r: 0,
+          r: 200,
           g: 70,
         };
         particles.push(p);

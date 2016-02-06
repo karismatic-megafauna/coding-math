@@ -7,7 +7,8 @@ import { bigBang } from './episode-8/bigBang';
 import { fireWorks } from './episode-9/fireWorks';
 import { ship } from './episode-10/ship';
 import { orbit } from './episode-11/orbit';
-import { bounceyBall, fountain } from './episode-12/edgeHandling';
+import { bounceyBall } from './episode-12/bounceyBall';
+import { fountain } from './episode-12/fountain';
 
 const sidebar = document.querySelector('#sidebar');
 

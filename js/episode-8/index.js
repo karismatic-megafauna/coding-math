@@ -1,4 +1,5 @@
 // TODO: optimize with episode-12 partical removal
+import { removeDeadParticles } from '../utils';
 import { particle } from '../particle';
 
 const switcher = { on: true };
@@ -15,10 +16,9 @@ export const bigBang = {
     const context = canvas.getContext('2d');
     const width = canvas.width = window.innerWidth;
     const height = canvas.height = window.innerHeight;
-    const particles = [];
-    const numParticles = 100;
+    let particles = [];
 
-    for (let i = 0; i < numParticles; i++) {
+    for (let i = 0; i < 100; i++) {
       particles.push(
         particle.create(
           width / 2,
@@ -32,7 +32,7 @@ export const bigBang = {
     function update() {
       context.clearRect(0, 0, width, height);
 
-      for (let i = 0; i < numParticles; i++) {
+      for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
         p.update();
         context.beginPath();
@@ -40,7 +40,10 @@ export const bigBang = {
         context.fill();
       }
 
-      if (switcher.on) {
+      particles = removeDeadParticles(particles, width, height);
+      context.font = '24px serif';
+      context.fillText(`particles on page: ${particles.length}`, 200, 50);
+      if (switcher.on && particles.length) {
         frameId = requestAnimationFrame(update);
       }
     }

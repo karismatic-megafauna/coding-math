@@ -8,13 +8,23 @@ export const particle = {
   radius: null,
 
   create(x, y, speed, direction, grav) {
-    var obj = Object.create(this);
+    const obj = Object.create(this);
     obj.position = vector.create(x, y);
     obj.velocity = vector.create(0, 0);
     obj.velocity.setLength(speed);
     obj.velocity.setAngle(direction);
     obj.gravity = vector.create(0, grav || 0);
     return obj;
+  },
+
+  offCanvas(w, h) {
+    if (this.position.getX() - this.radius > w ||
+        this.position.getX() + this.radius < 0 ||
+        this.position.getY() - this.radius > h ||
+        this.position.getY() + this.radius < 0) {
+      return true;
+    }
+    return false;
   },
 
   accelerate(accel) {

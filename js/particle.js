@@ -5,6 +5,7 @@ export const particle = {
   velocity: null,
   mass: null,
   gravity: null,
+  radius: null,
 
   create(x, y, speed, direction, grav) {
     var obj = Object.create(this);

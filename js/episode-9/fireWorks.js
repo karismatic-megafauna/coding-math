@@ -15,7 +15,7 @@ export const fireWorks = {
     const context = canvas.getContext('2d');
     const width = canvas.width = window.innerWidth;
     const height = canvas.height = window.innerHeight;
-    let particles = [];
+    const particles = [];
 
     for (let i = 0; i < 100; i++) {
       particles.push(
@@ -40,7 +40,7 @@ export const fireWorks = {
         context.fill();
       }
 
-      particles = removeDeadParticles(particles, width, height);
+      removeDeadParticles(particles, width, height);
       context.font = '24px serif';
       context.fillText(`particles on page: ${particles.length}`, 200, 50);
       if (switcher.on && particles.length) {

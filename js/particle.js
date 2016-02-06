@@ -6,6 +6,7 @@ export const particle = {
   mass: null,
   gravity: null,
   radius: null,
+  color: null,
 
   create(x, y, speed, direction, grav) {
     const obj = Object.create(this);

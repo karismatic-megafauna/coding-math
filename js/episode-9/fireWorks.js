@@ -24,7 +24,8 @@ export const fireWorks = {
           height / 3,
           Math.random() * 5 + 2,
           Math.random() * Math.PI * 2,
-          0.1)
+          0.1
+        )
       );
     }
 

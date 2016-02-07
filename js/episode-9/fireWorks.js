@@ -1,4 +1,4 @@
-import { removeDeadParticles } from '../utils';
+import { removeDeadParticles, getRandomInt } from '../utils';
 import { particle } from '../particle';
 
 const switcher = { on: false };
@@ -25,7 +25,7 @@ export const fireWorks = {
         Math.random() * Math.PI * 2,
         0.1
       );
-      p.radius = 50;
+      p.radius = getRandomInt(2, 15);
       particles.push(p);
     }
 

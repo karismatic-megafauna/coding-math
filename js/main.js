@@ -8,7 +8,7 @@ import { fireWorks } from './episode-9/fireWorks';
 import { ship } from './episode-10/ship';
 import { orbit } from './episode-11/orbit';
 import { bounceyBall } from './episode-12/bounceyBall';
-import { fountain } from './episode-12/fountain';
+import { volcano } from './episode-12/volcano';
 
 const sidebar = document.querySelector('#sidebar');
 
@@ -22,10 +22,10 @@ const components = {
   'Ship': ship,
   'Orbit': orbit,
   'Bouncy Ball': bounceyBall,
-  'Fountain': fountain,
+  'Volcano': volcano,
 };
 
-let currentComponentName = 'Fountain';
+let currentComponentName = 'Volcano';
 
 function getComponent(componentName) {
   return components[componentName];

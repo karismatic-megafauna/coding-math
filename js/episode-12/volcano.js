@@ -1,10 +1,8 @@
-// TODO: Rename me to fountain.js
 import { particle } from '../particle';
-import { getRandomInt } from '../utils';
 
 const switcher = { on: false };
 let frameId;
-export const fountain = {
+export const volcano = {
   tearDown() {
     switcher.on = false;
     cancelAnimationFrame(frameId);

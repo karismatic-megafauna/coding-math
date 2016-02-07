@@ -18,15 +18,15 @@ export const fireWorks = {
     const particles = [];
 
     for (let i = 0; i < 100; i++) {
-      particles.push(
-        particle.create(
-          width / 2,
-          height / 3,
-          Math.random() * 5 + 2,
-          Math.random() * Math.PI * 2,
-          0.1
-        )
+      const p = particle.create(
+        width / 2,
+        height / 3,
+        Math.random() * 5 + 2,
+        Math.random() * Math.PI * 2,
+        0.1
       );
+      p.radius = 50;
+      particles.push(p);
     }
 
     function update() {
@@ -36,7 +36,7 @@ export const fireWorks = {
         const p = particles[i];
         p.update();
         context.beginPath();
-        context.arc(p.position.getX(), p.position.getY(), 4, 0, Math.PI * 2, false);
+        context.arc(p.position.getX(), p.position.getY(), p.radius, 0, Math.PI * 2, false);
         context.fill();
       }
 

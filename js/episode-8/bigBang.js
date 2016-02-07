@@ -22,7 +22,7 @@ export const bigBang = {
         particle.create(
           width / 2,
           height / 2,
-          Math.random() * 4 + 1,
+          1,
           Math.random() * Math.PI * 2
         )
       );

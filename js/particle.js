@@ -19,16 +19,6 @@ export const particle = {
     return obj;
   },
 
-  offCanvas(w, h) {
-    if (this.position.getX() - this.radius > w ||
-        this.position.getX() + this.radius < 0 ||
-        this.position.getY() - this.radius > h ||
-        this.position.getY() + this.radius < 0) {
-      return true;
-    }
-    return false;
-  },
-
   accelerate(accel) {
     this.velocity.addTo(accel);
   },

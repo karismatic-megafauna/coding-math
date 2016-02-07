@@ -17,6 +17,10 @@ export const fountain = {
     const height = canvas.height = window.innerHeight;
     const particles = [];
 
+    function getUpwardVelocity(node) {
+      return Math.min(0, node.velocity.getY()) * -1;
+    }
+
     function update() {
       context.clearRect(0, 0, width, height);
 
@@ -30,12 +34,13 @@ export const fountain = {
         );
         p.radius = Math.random() * 10 + 2;
         p.color = {
-          b: getRandomInt(100, 255),
-          r: 200,
-          g: 70,
+          b: 0,
+          r: 255,
+          g: 0,
         };
         particles.push(p);
       }
+      // go to from red to black depending on velocity
 
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
@@ -43,7 +48,9 @@ export const fountain = {
 
         context.beginPath();
         context.arc(p.position.getX(), p.position.getY(), p.radius, 0, Math.PI * 2, false);
-        context.fillStyle = `rgb( ${p.color.r} , ${p.color.g} , ${p.color.b})`;
+        const upwardVelocity = getUpwardVelocity(p) / 5;
+        const red = Math.floor(255 * upwardVelocity);
+        context.fillStyle = `rgb( ${red} , ${p.color.g} , ${p.color.b})`;
         context.fill();
 
         if (p.position.getY() - p.radius > height) {

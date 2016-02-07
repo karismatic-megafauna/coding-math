@@ -25,7 +25,7 @@ const components = {
   'Fountain': fountain,
 };
 
-let currentComponentName = 'Random Lines';
+let currentComponentName = 'Fountain';
 
 function getComponent(componentName) {
   return components[componentName];

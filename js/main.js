@@ -9,6 +9,7 @@ import { ship } from './episode-10/ship';
 import { orbit } from './episode-11/orbit';
 import { bounceyBall } from './episode-12/bounceyBall';
 import { volcano } from './episode-12/volcano';
+import { friction } from './episode-13/friction';
 
 const sidebar = document.querySelector('#sidebar');
 
@@ -23,6 +24,7 @@ const components = {
   'Orbit': orbit,
   'Bouncy Ball': bounceyBall,
   'Volcano': volcano,
+  'Friction': friction,
 };
 
 let currentComponentName = 'Volcano';

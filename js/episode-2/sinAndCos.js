@@ -15,15 +15,16 @@ export const sinAndCos = {
     const height = canvas.height = window.innerHeight;
     const randNum = (Math.floor(Math.random() * 500) + 200);
 
-    context.translate(0, height / 2);
-    context.scale(1, -1);
-
-    let waveStep = 1;
-    let start = 0;
+    let waveStep = .09;
+    let start = 0; 
     let end = Math.PI * 2;
     function render() {
-      debugger;
-      context.clearRect(0, 0, width, height);
+      context.clearRect(0, 0, canvas.width, canvas.height);
+
+      context.save();
+
+      context.translate(0, height / 2);
+      context.scale(1, -1);
 
 
       let freq = end - start;
@@ -39,14 +40,13 @@ export const sinAndCos = {
         context.fillStyle = 'black';
         context.fillRect(x, y, 5, 5);
       }
-      start = waveStep; 
-      end = end + waveStep; 
+      start = waveStep;
+      end = end + waveStep;
+
+      context.restore();
       if (switcher.on) {
         frameId = requestAnimationFrame(render);
       }
-      waveStep++;
-      debugger;
-
     }
     render();
   },

@@ -38,7 +38,6 @@ export const volcano = {
         };
         particles.push(p);
       }
-      // go to from red to black depending on velocity
 
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];

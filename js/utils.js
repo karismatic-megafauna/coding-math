@@ -31,3 +31,7 @@ export function removeDeadParticles(particles, w, h) {
 export function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+export function norm(value, min, max) {
+  return (value - min) / (max - min);
+}

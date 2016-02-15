@@ -1,7 +1,6 @@
 // Utility funcitons weeeee!
 
 export function inRange(min, max, valueMin, valueMax) {
-  console.log(min, max, valueMax, valueMin);
   return valueMax > min && valueMin < max;
 }
 
@@ -10,7 +9,7 @@ export function inBox(w, h, node) {
   const y = node.position.getY();
   const radius = node.radius;
 
-  if (inRange(0, w, x - radius, x + radius ) &&
+  if (inRange(0, w, x - radius, x + radius) &&
       inRange(0, h, y - radius, y + radius)) {
     return true;
   }
@@ -38,4 +37,8 @@ export function normalize(value, min, max) {
 
 export function lerp(norm, min, max) {
   return (max - min) * norm + min;
+}
+
+export function map(value, sourceMin, sourceMax, destMin, destMax) {
+  return lerp(normalize(value, sourceMin, sourceMax), destMin, destMax);
 }

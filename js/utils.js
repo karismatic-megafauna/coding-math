@@ -42,3 +42,7 @@ export function lerp(norm, min, max) {
 export function map(value, sourceMin, sourceMax, destMin, destMax) {
   return lerp(normalize(value, sourceMin, sourceMax), destMin, destMax);
 }
+
+export function clamp(value, min, max) {
+  return Math.max(Math.min(value, min), max);
+}

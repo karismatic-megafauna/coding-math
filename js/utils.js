@@ -27,28 +27,29 @@ export function removeDeadParticles(particles, w, h) {
   return particles;
 }
 
-export function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 // TODO: write tests for these
 // Utils from Minis
+// Mini 1
 export function normalize(value, min, max) {
   return (value - min) / (max - min);
 }
 
+// Mini 2
 export function lerp(norm, min, max) {
   return (max - min) * norm + min;
 }
 
+// Mini 3
 export function map(value, sourceMin, sourceMax, destMin, destMax) {
   return lerp(normalize(value, sourceMin, sourceMax), destMin, destMax);
 }
 
+// Mini 4
 export function clamp(value, min, max) {
   return Math.max(Math.min(value, min), max);
 }
 
+// Mini 5
 export function distance(p0, p1) {
   const dx = p1.x - p0.x;
   const dy = p1.y - p0.y;
@@ -59,4 +60,13 @@ export function distanceXY(x0, y0, x1, y1) {
   const dx = x1 - x0;
   const dy = y1 - y0;
   return Math.sqrt((dx * dx) + (dy * dy));
+}
+
+// Mini 6
+export function randomRange(min, max) {
+  return min + Math.random() * (max - min);
+}
+
+export function randomInt(min, max) {
+  return Math.floor(min + Math.random() * (max - min + 1));
 }

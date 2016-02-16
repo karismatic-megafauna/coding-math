@@ -85,3 +85,7 @@ export function roundToPlaces(value, places) {
   const mult = Math.pow(10, places);
   return Math.round(value * mult) / mult;
 }
+
+export function roundNearest(value, nearest) {
+  return Math.round(value / nearest) * nearest;
+}

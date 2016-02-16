@@ -70,3 +70,12 @@ export function randomRange(min, max) {
 export function randomInt(min, max) {
   return Math.floor(min + Math.random() * (max - min + 1));
 }
+
+// Mini 7
+export function degreesToRads(degrees) {
+  return degrees / (180 / Math.PI);
+}
+
+export function radsToDegrees(rads) {
+  return rads * (180 / Math.PI);
+}

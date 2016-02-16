@@ -79,3 +79,9 @@ export function degreesToRads(degrees) {
 export function radsToDegrees(rads) {
   return rads * (180 / Math.PI);
 }
+
+// Mini 8
+export function roundToPlaces(value, places) {
+  const mult = Math.pow(10, places);
+  return Math.round(value * mult) / mult;
+}

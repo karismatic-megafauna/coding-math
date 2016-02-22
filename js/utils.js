@@ -89,3 +89,12 @@ export function roundToPlaces(value, places) {
 export function roundNearest(value, nearest) {
   return Math.round(value / nearest) * nearest;
 }
+
+// Mini 9
+export function randomDist(min, max, iterations) {
+  let total = 0;
+  for (let i = 0; i < iterations; i += 1) {
+    total += randomRange(min, max);
+  }
+  return total / iterations;
+}

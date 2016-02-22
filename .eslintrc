@@ -1,0 +1,14 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "rules": {
+    "react/jsx-boolean-value": 0,
+    "no-unused-expressions": [2, { "allowShortCircuit": true }],
+    "no-labels": [2, {"allowLoop": false, "allowSwitch": false}],
+    "new-cap": 0,
+    "camelcase": 0,
+    "id-length": 0,
+    "max-len": [1, 80],
+    "no-shadow": [1, {"builtinGlobals": false, "hoist": "all"}],
+  }
+}

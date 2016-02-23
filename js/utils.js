@@ -1,5 +1,7 @@
 // Utility funcitons weeeee!
-export function inRange(min, max, valueMin, valueMax) {
+
+// DEPRECATED
+export function inRangeDep(min, max, valueMin, valueMax) {
   return valueMax > min && valueMin < max;
 }
 
@@ -8,8 +10,8 @@ export function inBox(w, h, node) {
   const y = node.position.getY();
   const radius = node.radius;
 
-  if (inRange(0, w, x - radius, x + radius) &&
-      inRange(0, h, y - radius, y + radius)) {
+  if (inRangeDep(0, w, x - radius, x + radius) &&
+      inRangeDep(0, h, y - radius, y + radius)) {
     return true;
   }
   return false;
@@ -105,6 +107,10 @@ export function circleCollision(c0, c1) {
 
 export function circlePointCollision(x, y, circle) {
   return distanceXY(x, y, circle.x, circle.y) < circle.radius;
+}
+
+export function inRange(value, min, max) {
+  return value >= Math.min(min, max) && value <= Math.max(min, max);
 }
 
 export function pointInRect(x, y, rect) {

@@ -31,4 +31,37 @@ describe('Utility Functions', () => {
       expect(result).to.equal(expected);
     });
   });
+  describe('map', () => {
+    it('needs to be implemented');
+  });
+  describe('clamp', () => {
+    it('needs to be implemented');
+  });
+  describe('distance', () => {
+    it('needs to be implemented');
+  });
+  describe('distanceXY', () => {
+    it('needs to be implemented');
+  });
+  describe('randomRange', () => {
+    it('needs to be implemented');
+  });
+  describe('randomInt', () => {
+    it('needs to be implemented');
+  });
+  describe('degreesToRads', () => {
+    it('needs to be implemented');
+  });
+  describe('radsToDegrees', () => {
+    it('needs to be implemented');
+  });
+  describe('roundToPlaces', () => {
+    it('needs to be implemented');
+  });
+  describe('roundNearest', () => {
+    it('needs to be implemented');
+  });
+  describe('randomDist', () => {
+    it('needs to be implemented');
+  });
 });

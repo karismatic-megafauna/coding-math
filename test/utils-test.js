@@ -4,6 +4,8 @@ import { expect } from 'chai';
 import {
   normalize,
   lerp,
+  degreesToRads,
+  radsToDegrees,
 } from '../js/utils';
 
 describe('Utility Functions', () => {
@@ -50,10 +52,24 @@ describe('Utility Functions', () => {
     it('needs to be implemented');
   });
   describe('degreesToRads', () => {
-    it('needs to be implemented');
+    it('converts degrees to radians', () => {
+      const radians = Math.PI / 4;
+      const degrees = 45;
+      const result = degreesToRads(degrees);
+
+      const expected = radians;
+      expect(result).to.equal(expected);
+    });
   });
   describe('radsToDegrees', () => {
-    it('needs to be implemented');
+    it('converts radians to degrees', () => {
+      const radians = Math.PI / 4;
+      const degrees = 45;
+      const result = radsToDegrees(radians);
+
+      const expected = degrees;
+      expect(result).to.equal(expected);
+    });
   });
   describe('roundToPlaces', () => {
     it('needs to be implemented');

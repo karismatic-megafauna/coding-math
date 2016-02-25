@@ -2,8 +2,9 @@ import { describe, it } from 'mocha';
 import { expect, assert } from 'chai';
 
 import {
-  clamp,
   circleCollision,
+  circlePointCollision,
+  clamp,
   degreesToRads,
   distance,
   distanceXY,
@@ -11,11 +12,11 @@ import {
   map,
   normalize,
   radsToDegrees,
+  randomDist,
   randomInt,
   randomRange,
-  roundToPlaces,
   roundNearest,
-  randomDist,
+  roundToPlaces,
 } from '../js/utils';
 
 describe('Utility Functions', () => {
@@ -177,7 +178,7 @@ describe('Utility Functions', () => {
   });
   describe('Collision utils', () => {
     describe('circleCollision', () => {
-      it('is true when two circles overlap', () => {
+      it('detects when two circles overlap', () => {
         const c0 = {
           x: 0,
           y: 0,
@@ -191,9 +192,48 @@ describe('Utility Functions', () => {
 
         assert(circleCollision(c0, c1));
       });
+      it('detects when two circles do not overlap', () => {
+        const c0 = {
+          x: 10,
+          y: 1000,
+          radius: 10,
+        };
+        const c1 = {
+          x: 5,
+          y: 5,
+          radius: 10,
+        };
+
+        assert(!circleCollision(c0, c1));
+      });
     });
     describe('circlePointCollision', () => {
-      it('needs to be implemented');
+      it('detects when a point overlaps with a circle', () => {
+        const c0 = {
+          x: 0,
+          y: 0,
+          radius: 10,
+        };
+        const point = {
+          x: 3,
+          y: 4,
+        };
+
+        assert(circlePointCollision(point.x, point.y, c0));
+      });
+      it('detects when a point does not overlap with a circle', () => {
+        const c0 = {
+          x: 100,
+          y: 100,
+          radius: 10,
+        };
+        const point = {
+          x: 3,
+          y: 4,
+        };
+
+        assert(!circlePointCollision(point.x, point.y, c0));
+      });
     });
     describe('inRange', () => {
       it('needs to be implemented');

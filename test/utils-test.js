@@ -8,6 +8,7 @@ import {
   degreesToRads,
   distance,
   distanceXY,
+  inRange,
   lerp,
   map,
   normalize,
@@ -236,7 +237,18 @@ describe('Utility Functions', () => {
       });
     });
     describe('inRange', () => {
-      it('needs to be implemented');
+      const min = 10;
+      const max = 50;
+      it('has a value in the specified range', () => {
+        const value = 20;
+
+        assert(inRange(value, min, max));
+      });
+      it('does not have a value outside the specified range', () => {
+        const value = 80;
+
+        assert(!inRange(value, min, max));
+      });
     });
     describe('pointInRect', () => {
       it('needs to be implemented');

@@ -1,8 +1,9 @@
 import { describe, it } from 'mocha';
-import { expect } from 'chai';
+import { expect, assert } from 'chai';
 
 import {
   clamp,
+  circleCollision,
   degreesToRads,
   distance,
   distanceXY,
@@ -176,18 +177,19 @@ describe('Utility Functions', () => {
   });
   describe('Collision utils', () => {
     describe('circleCollision', () => {
-      it('is true when overlapping', () => {
+      it('is true when two circles overlap', () => {
         const c0 = {
           x: 0,
           y: 0,
           radius: 10,
         };
         const c1 = {
-          x: 10,
-          y: 10,
+          x: 5,
+          y: 5,
           radius: 10,
         };
-        
+
+        assert(circleCollision(c0, c1));
       });
     });
     describe('circlePointCollision', () => {

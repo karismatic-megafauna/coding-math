@@ -7,6 +7,7 @@ import {
   degreesToRads,
   radsToDegrees,
   randomRange,
+  map,
 } from '../js/utils';
 
 describe('Utility Functions', () => {
@@ -35,7 +36,18 @@ describe('Utility Functions', () => {
     });
   });
   describe('map', () => {
-    it('needs to be implemented');
+    it('converts a normalization from one range to another', () => {
+      const sourceMin = 0;
+      const sourceMax = 100;
+      const destMin = 200;
+      const destMax = 400;
+      const value = 50;
+
+      const result = map(value, sourceMin, sourceMax, destMin, destMax);
+      const expected = 300;
+
+      expect(result).to.equal(expected);
+    });
   });
   describe('clamp', () => {
     it('needs to be implemented');

@@ -8,6 +8,7 @@ import {
   radsToDegrees,
   randomRange,
   map,
+  clamp,
 } from '../js/utils';
 
 describe('Utility Functions', () => {
@@ -50,7 +51,23 @@ describe('Utility Functions', () => {
     });
   });
   describe('clamp', () => {
-    it('needs to be implemented');
+    const min = 50;
+    const max = 100;
+    it('returns an outside number at a boundary of a range', () => {
+      const valueUnder = 25;
+      const resultUnder = clamp(valueUnder, min, max);
+      expect(resultUnder).to.equal(min);
+
+      const valueOver = 125;
+      const resultOver = clamp(valueOver, min, max);
+      expect(resultOver).to.equal(max);
+    });
+    it('returns a number in the boundary', () => {
+      const value = 75;
+      const result = clamp(value, min, max);
+
+      expect(result).to.equal(value);
+    });
   });
   describe('distance', () => {
     it('needs to be implemented');

@@ -47,7 +47,7 @@ export function map(value, sourceMin, sourceMax, destMin, destMax) {
 
 // Mini 4
 export function clamp(value, min, max) {
-  return Math.max(Math.min(value, min), max);
+  return Math.min(Math.max(value, Math.min(min, max)), Math.max(min, max));
 }
 
 // Mini 5

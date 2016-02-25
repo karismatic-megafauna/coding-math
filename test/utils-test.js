@@ -6,6 +6,7 @@ import {
   lerp,
   degreesToRads,
   radsToDegrees,
+  randomRange,
 } from '../js/utils';
 
 describe('Utility Functions', () => {
@@ -46,7 +47,13 @@ describe('Utility Functions', () => {
     it('needs to be implemented');
   });
   describe('randomRange', () => {
-    it('needs to be implemented');
+    it('returns a number inside of a random range', () => {
+      const min = 50;
+      const max = 100;
+      const result = randomRange(min, max);
+
+      expect(result).to.be.within(min, max);
+    });
   });
   describe('randomInt', () => {
     it('needs to be implemented');

@@ -1,5 +1,5 @@
 import { describe, it } from 'mocha';
-import { expect } from 'chai';
+import { expect, assert } from 'chai';
 
 import {
   normalize,
@@ -7,6 +7,7 @@ import {
   degreesToRads,
   radsToDegrees,
   randomRange,
+  randomInt,
   map,
   clamp,
   distance,
@@ -110,7 +111,17 @@ describe('Utility Functions', () => {
     });
   });
   describe('randomInt', () => {
-    it('needs to be implemented');
+    it('returns a random interger inside of a range', () => {
+      const min = 50;
+      const max = 100;
+      const result = randomInt(min, max);
+
+      assert.isNumber(result);
+
+      const isInt = result % 1 === 0;
+      assert(isInt, `is not an interger: ${result}`);
+      expect(result).to.be.within(min, max);
+    });
   });
   describe('degreesToRads', () => {
     it('converts degrees to radians', () => {

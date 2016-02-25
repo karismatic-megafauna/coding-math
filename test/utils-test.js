@@ -2,16 +2,18 @@ import { describe, it } from 'mocha';
 import { expect, assert } from 'chai';
 
 import {
-  normalize,
-  lerp,
-  degreesToRads,
-  radsToDegrees,
-  randomRange,
-  randomInt,
-  map,
   clamp,
+  degreesToRads,
   distance,
   distanceXY,
+  lerp,
+  map,
+  normalize,
+  radsToDegrees,
+  randomInt,
+  randomRange,
+  roundToPlaces,
+  roundNearest,
 } from '../js/utils';
 
 describe('Utility Functions', () => {
@@ -144,10 +146,23 @@ describe('Utility Functions', () => {
     });
   });
   describe('roundToPlaces', () => {
-    it('needs to be implemented');
+    it('rounds the number to the specified place', () => {
+      const value = 1989.12345;
+      const result = roundToPlaces(value, 1);
+      const result2 = roundToPlaces(value, 2);
+
+      expect(result).to.equal(1989.1);
+      expect(result2).to.equal(1989.12);
+    });
   });
   describe('roundNearest', () => {
-    it('needs to be implemented');
+    it('rounds to the nearest multiple of the value', () => {
+      const value = 131;
+      const nearest = 20;
+      const result = roundNearest(value, nearest);
+
+      expect(result).to.equal(140);
+    });
   });
   describe('randomDist', () => {
     it('needs to be implemented');

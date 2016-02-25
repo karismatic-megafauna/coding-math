@@ -9,6 +9,8 @@ import {
   randomRange,
   map,
   clamp,
+  distance,
+  distanceXY,
 } from '../js/utils';
 
 describe('Utility Functions', () => {
@@ -70,10 +72,33 @@ describe('Utility Functions', () => {
     });
   });
   describe('distance', () => {
-    it('needs to be implemented');
+    it('finds the distance between two points in an object', () => {
+      // 3 4 5 triangle
+      const a = { x: 1, y: 1 };
+      const b = { x: 5, y: 4 };
+
+      // 5 12 13 triangle
+      const c = { x: 0, y: 0 };
+      const d = { x: 12, y: 5 };
+
+      const result = distance(a, b);
+      const result2 = distance(c, d);
+
+      expect(result).to.equal(5);
+      expect(result2).to.equal(13);
+    });
   });
   describe('distanceXY', () => {
-    it('needs to be implemented');
+    it('finds the distance between two pairs of xy coords', () => {
+      // 3 4 5 triangle
+      const ax = 0;
+      const ay = 0;
+      const bx = 4;
+      const by = 3;
+      const result = distanceXY(ax, ay, bx, by);
+
+      expect(result).to.equal(5);
+    });
   });
   describe('randomRange', () => {
     it('returns a number inside of a random range', () => {

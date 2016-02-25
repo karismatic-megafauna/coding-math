@@ -18,6 +18,7 @@ import {
   randomRange,
   roundNearest,
   roundToPlaces,
+  pointInRect,
 } from '../js/utils';
 
 describe('Utility Functions', () => {
@@ -180,58 +181,28 @@ describe('Utility Functions', () => {
   describe('Collision utils', () => {
     describe('circleCollision', () => {
       it('detects when two circles overlap', () => {
-        const c0 = {
-          x: 0,
-          y: 0,
-          radius: 10,
-        };
-        const c1 = {
-          x: 5,
-          y: 5,
-          radius: 10,
-        };
+        const c0 = { x: 0, y: 0, radius: 10 };
+        const c1 = { x: 5, y: 5, radius: 10 };
 
         assert(circleCollision(c0, c1));
       });
       it('detects when two circles do not overlap', () => {
-        const c0 = {
-          x: 10,
-          y: 1000,
-          radius: 10,
-        };
-        const c1 = {
-          x: 5,
-          y: 5,
-          radius: 10,
-        };
+        const c0 = { x: 10, y: 1000, radius: 10 };
+        const c1 = { x: 5, y: 5, radius: 10 };
 
         assert(!circleCollision(c0, c1));
       });
     });
     describe('circlePointCollision', () => {
       it('detects when a point overlaps with a circle', () => {
-        const c0 = {
-          x: 0,
-          y: 0,
-          radius: 10,
-        };
-        const point = {
-          x: 3,
-          y: 4,
-        };
+        const c0 = { x: 0, y: 0, radius: 10 };
+        const point = { x: 3, y: 4 };
 
         assert(circlePointCollision(point.x, point.y, c0));
       });
       it('detects when a point does not overlap with a circle', () => {
-        const c0 = {
-          x: 100,
-          y: 100,
-          radius: 10,
-        };
-        const point = {
-          x: 3,
-          y: 4,
-        };
+        const c0 = { x: 100, y: 100, radius: 10 };
+        const point = { x: 3, y: 4 };
 
         assert(!circlePointCollision(point.x, point.y, c0));
       });
@@ -251,7 +222,16 @@ describe('Utility Functions', () => {
       });
     });
     describe('pointInRect', () => {
-      it('needs to be implemented');
+      const rect = { x: 0, y: 0, width: 100, height: 30 };
+
+      it('detects a point inside a rectangle', () => {
+        const point = { x: 10, y: 10 };
+        assert(pointInRect(point.x, point.y, rect));
+      });
+      it('does not detect a point outside a rectangle', () => {
+        const point = { x: 10, y: 31 };
+        assert(!pointInRect(point.x, point.y, rect));
+      });
     });
     describe('rangeIntersect', () => {
       it('needs to be implemented');

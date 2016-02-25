@@ -92,7 +92,7 @@ export function inRange(value, min, max) {
 
 export function pointInRect(x, y, rect) {
   return inRange(x, rect.x, rect.x + rect.width) &&
-         inRange(y. rect.y, rect.y + rect.height);
+         inRange(y, rect.y, rect.y + rect.height);
 }
 
 export function rangeIntersect(min0, max0, min1, max1) {

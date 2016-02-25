@@ -18,6 +18,7 @@ import {
   randomRange,
   roundNearest,
   roundToPlaces,
+  rangeIntersect,
   pointInRect,
 } from '../js/utils';
 
@@ -234,7 +235,23 @@ describe('Utility Functions', () => {
       });
     });
     describe('rangeIntersect', () => {
-      it('needs to be implemented');
+      it('is inside of two overlapping ranges', () => {
+        const min0 = 0;
+        const max0 = 50;
+        const min1 = 30;
+        const max1 = 60;
+
+        assert(rangeIntersect(min0, max0, min1, max1));
+      });
+
+      it('is not inside of two non-overlapping ranges', () => {
+        const min0 = 0;
+        const max0 = 50;
+        const min1 = 51;
+        const max1 = 60;
+
+        assert(!rangeIntersect(min0, max0, min1, max1));
+      });
     });
     describe('rectIntersect', () => {
       it('needs to be implemented');

@@ -12,14 +12,15 @@ import {
   lerp,
   map,
   normalize,
+  pointInRect,
   radsToDegrees,
   randomDist,
   randomInt,
   randomRange,
+  rangeIntersect,
+  rectIntersect,
   roundNearest,
   roundToPlaces,
-  rangeIntersect,
-  pointInRect,
 } from '../js/utils';
 
 describe('Utility Functions', () => {
@@ -235,7 +236,7 @@ describe('Utility Functions', () => {
       });
     });
     describe('rangeIntersect', () => {
-      it('is inside of two overlapping ranges', () => {
+      it('detects overlapping ranges', () => {
         const min0 = 0;
         const max0 = 50;
         const min1 = 30;
@@ -244,7 +245,7 @@ describe('Utility Functions', () => {
         assert(rangeIntersect(min0, max0, min1, max1));
       });
 
-      it('is not inside of two non-overlapping ranges', () => {
+      it('does not detect non-overlapping ranges', () => {
         const min0 = 0;
         const max0 = 50;
         const min1 = 51;
@@ -253,8 +254,20 @@ describe('Utility Functions', () => {
         assert(!rangeIntersect(min0, max0, min1, max1));
       });
     });
+
     describe('rectIntersect', () => {
-      it('needs to be implemented');
+      it('detects rectangles that interset', () => {
+        const rect1 = { x: 0, y: 0, width: 10, height: 10 };
+        const rect2 = { x: 5, y: 5, width: 100, height: 1 };
+
+        assert(rectIntersect(rect1, rect2));
+      });
+      it('does not detect rectangles that do not interset', () => {
+        const rect1 = { x: 0, y: 0, width: 10, height: 10 };
+        const rect2 = { x: 50, y: 50, width: 100, height: 100 };
+
+        assert(!rectIntersect(rect1, rect2));
+      });
     });
   });
 });

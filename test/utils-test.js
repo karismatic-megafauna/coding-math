@@ -1,5 +1,5 @@
 import { describe, it } from 'mocha';
-import { expect, assert } from 'chai';
+import { expect } from 'chai';
 
 import {
   clamp,
@@ -119,10 +119,9 @@ describe('Utility Functions', () => {
       const max = 100;
       const result = randomInt(min, max);
 
-      assert.isNumber(result);
+      const isInt = (num) => num % 1 === 0;
 
-      const isInt = result % 1 === 0;
-      assert(isInt, `is not an interger: ${result}`);
+      expect(result).to.satisfy(isInt);
       expect(result).to.be.within(min, max);
     });
   });
@@ -177,7 +176,19 @@ describe('Utility Functions', () => {
   });
   describe('Collision utils', () => {
     describe('circleCollision', () => {
-      it('needs to be implemented');
+      it('is true when overlapping', () => {
+        const c0 = {
+          x: 0,
+          y: 0,
+          radius: 10,
+        };
+        const c1 = {
+          x: 10,
+          y: 10,
+          radius: 10,
+        };
+        
+      });
     });
     describe('circlePointCollision', () => {
       it('needs to be implemented');

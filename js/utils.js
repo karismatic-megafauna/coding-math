@@ -1,35 +1,11 @@
-// Utility funcitons weeeee!
+// Utility funcitons
 
 // DEPRECATED
 export function inRangeDep(min, max, valueMin, valueMax) {
   return valueMax > min && valueMin < max;
 }
 
-export function inBox(w, h, node) {
-  const x = node.position.getX();
-  const y = node.position.getY();
-  const radius = node.radius;
-
-  if (inRangeDep(0, w, x - radius, x + radius) &&
-      inRangeDep(0, h, y - radius, y + radius)) {
-    return true;
-  }
-  return false;
-}
-
-export function removeDeadParticles(particles, w, h) {
-  for (let i = particles.length - 1; i >= 0; i -= 1) {
-    const p = particles[i];
-
-    if (!inBox(w, h, p)) {
-      particles.splice(i, 1);
-    }
-  }
-  return particles;
-}
-
-// TODO: write tests for these
-// Utils from Minis
+// Utils
 // Mini 1
 export function normalize(value, min, max) {
   return (value - min) / (max - min);
@@ -100,6 +76,7 @@ export function randomDist(min, max, iterations) {
   return total / iterations;
 }
 
+// TODO: write tests for these
 // Collision Utils
 export function circleCollision(c0, c1) {
   return distance(c0, c1) <= c0.radius + c1.radius;
@@ -125,4 +102,30 @@ export function rangeIntersect(min0, max0, min1, max1) {
 export function rectIntersect(r0, r1) {
   return rangeIntersect(r0.x, r0.x + r0.width, r1.x, r1.x + r1.width) &&
          rangeIntersect(r0.y, r0.y + r0.height, r1.y, r1.y + r1.height);
+}
+
+// Misc
+// not sure where this belongs
+export function inBox(w, h, node) {
+  const x = node.position.getX();
+  const y = node.position.getY();
+  const radius = node.radius;
+
+  if (inRangeDep(0, w, x - radius, x + radius) &&
+      inRangeDep(0, h, y - radius, y + radius)) {
+    return true;
+  }
+  return false;
+}
+
+// not sure where this belongs
+export function removeDeadParticles(particles, w, h) {
+  for (let i = particles.length - 1; i >= 0; i -= 1) {
+    const p = particles[i];
+
+    if (!inBox(w, h, p)) {
+      particles.splice(i, 1);
+    }
+  }
+  return particles;
 }

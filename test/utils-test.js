@@ -14,6 +14,7 @@ import {
   randomRange,
   roundToPlaces,
   roundNearest,
+  randomDist,
 } from '../js/utils';
 
 describe('Utility Functions', () => {
@@ -165,6 +166,33 @@ describe('Utility Functions', () => {
     });
   });
   describe('randomDist', () => {
-    it('needs to be implemented');
+    it('returns a random distribution between specified max and min', () => {
+      const min = 0;
+      const max = 40;
+      const iterations = 20;
+
+      const result = randomDist(min, max, iterations);
+      expect(result).to.be.within(min, max);
+    });
+  });
+  describe('Collision utils', () => {
+    describe('circleCollision', () => {
+      it('needs to be implemented');
+    });
+    describe('circlePointCollision', () => {
+      it('needs to be implemented');
+    });
+    describe('inRange', () => {
+      it('needs to be implemented');
+    });
+    describe('pointInRect', () => {
+      it('needs to be implemented');
+    });
+    describe('rangeIntersect', () => {
+      it('needs to be implemented');
+    });
+    describe('rectIntersect', () => {
+      it('needs to be implemented');
+    });
   });
 });

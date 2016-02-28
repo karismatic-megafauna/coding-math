@@ -76,7 +76,6 @@ export function randomDist(min, max, iterations) {
   return total / iterations;
 }
 
-// TODO: write tests for these
 // Collision Utils
 export function circleCollision(c0, c1) {
   return distance(c0, c1) <= c0.radius + c1.radius;

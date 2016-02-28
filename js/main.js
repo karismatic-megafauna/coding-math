@@ -28,7 +28,7 @@ const components = {
   'Friction': friction,
 };
 
-let currentComponentName = 'Sin and Cos';
+let currentComponentName = 'Volcano';
 
 function getComponent(componentName) {
   return components[componentName];

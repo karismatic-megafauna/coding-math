@@ -11,6 +11,7 @@ import { orbit } from './episode-11/orbit';
 import { bounceyBall } from './episode-12/bounceyBall';
 import { volcano } from './episode-12/volcano';
 import { friction } from './episode-13/friction';
+import { collisionDetection } from './episode-14/collisionDetection';
 
 const sidebar = document.querySelector('#sidebar');
 
@@ -26,6 +27,7 @@ const components = {
   'Bouncy Ball': bounceyBall,
   'Volcano': volcano,
   'Friction': friction,
+  'Collision Detection': collisionDetection,
 };
 
 let currentComponentName = 'Volcano';

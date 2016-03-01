@@ -7,6 +7,7 @@ export const particle = {
   gravity: null,
   radius: null,
   bounce: -1,
+  friction: 1,
   color: null,
 
   create(x, y, speed, direction, grav) {
@@ -24,6 +25,7 @@ export const particle = {
   },
 
   update() {
+    this.velocity.multiplyBy(this.friction);
     this.velocity.addTo(this.gravity);
     this.position.addTo(this.velocity);
   },

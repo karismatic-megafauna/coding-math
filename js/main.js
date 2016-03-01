@@ -12,6 +12,7 @@ import { bounceyBall } from './episode-12/bounceyBall';
 import { volcano } from './episode-12/volcano';
 import { friction } from './episode-13/friction';
 import { collisionDetection } from './episode-14/collisionDetection';
+import { springOne } from './episode-15/springs';
 
 const sidebar = document.querySelector('#sidebar');
 
@@ -28,9 +29,10 @@ const components = {
   'Volcano': volcano,
   'Friction': friction,
   'Collision Detection': collisionDetection,
+  'Mouse Spring': springOne,
 };
 
-let currentComponentName = 'Volcano';
+let currentComponentName = 'Mouse Spring';
 
 function getComponent(componentName) {
   return components[componentName];

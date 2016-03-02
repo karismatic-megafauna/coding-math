@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 import { randomLines } from './episode-1/randomLines';
 // TODO: rename sinAndCos to pendulumWave
-import { sinAndCos } from './episode-2/sinAndCos';
+import { pendulumWave } from './episode-2/pendulumWave';
 import { growingCircle } from './episode-3/growingCircle';
 import { circleOfCircles } from './episode-4/circleOfCircles';
 import { bigBang } from './episode-8/bigBang';

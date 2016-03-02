@@ -1,7 +1,7 @@
 const switcher = { on: false };
 let frameId;
 
-export const sinAndCos = {
+export const pendulumWave = {
   tearDown() {
     switcher.on = false;
     cancelAnimationFrame(frameId);

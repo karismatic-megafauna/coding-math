@@ -1,6 +1,5 @@
 import 'babel-polyfill';
 import { randomLines } from './episode-1/randomLines';
-// TODO: rename sinAndCos to pendulumWave
 import { pendulumWave } from './episode-2/pendulumWave';
 import { growingCircle } from './episode-3/growingCircle';
 import { circleOfCircles } from './episode-4/circleOfCircles';
@@ -18,7 +17,7 @@ const sidebar = document.querySelector('#sidebar');
 
 const components = {
   'Random Lines': randomLines,
-  'Pendulum Wave': sinAndCos,
+  'Pendulum Wave': pendulumWave,
   'Growing Circle': growingCircle,
   'Circle of Circles': circleOfCircles,
   'Big Bang': bigBang,

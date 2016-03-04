@@ -13,8 +13,13 @@ https://www.youtube.com/channel/UCF6F8LdCSWlRwQm_hfA2bcQ
 
 It is written in ES6 and has tests!
 
-If you just want to get going and not set up all that madness, checkout the 
+If you just want to get going and not set up all that madness, checkout the
 repo online for coding math:
 
 https://github.com/bit101/codingmath
 
+## TODO's
+Add redux!
+It would be great to have some sort of state management for key presses
+or maybe the beginnings of saving user state for a video game! Need to
+watch the ballistics video to see where this might be applicable :)

@@ -11,7 +11,7 @@ import { bounceyBall } from './episode-12/bounceyBall';
 import { volcano } from './episode-12/volcano';
 import { friction } from './episode-13/friction';
 import { collisionDetection } from './episode-14/collisionDetection';
-import { springOne, springTwo } from './episode-15/springs';
+import { springOne, springTwo, springCollision } from './episode-15/springs';
 
 const sidebar = document.querySelector('#sidebar');
 
@@ -30,9 +30,10 @@ const components = {
   'Collision Detection': collisionDetection,
   'Mouse Spring': springOne,
   'Mouse Spring 2': springTwo,
+  'Spring Collision': springCollision,
 };
 
-let currentComponentName = 'Mouse Spring';
+let currentComponentName = 'Spring Collision';
 
 function getComponent(componentName) {
   return components[componentName];

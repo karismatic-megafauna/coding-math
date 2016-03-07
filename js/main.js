@@ -14,7 +14,7 @@ import { collisionDetection } from './episode-14/collisionDetection';
 import { springOne, springTwo, springCollision } from './episode-15/springs';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Hello } from '../hello.jsx';
+import { SliderExampleSimple } from '../hello.jsx';
 
 const sidebar = document.querySelector('#sidebar');
 

@@ -21,11 +21,19 @@ module.exports = {
   module: {
     loaders: [
       {
+        test: dir_js,
         exclude: /node_modules/,
         loader: 'babel-loader',
-        test: dir_js,
-      }
-    ]
+      },
+      {
+        test: /.jsx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['es2015', 'react'],
+        },
+      },
+    ],
   },
   plugins: [
     // Simply copies the files over

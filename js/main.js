@@ -12,6 +12,9 @@ import { volcano } from './episode-12/volcano';
 import { friction } from './episode-13/friction';
 import { collisionDetection } from './episode-14/collisionDetection';
 import { springOne, springTwo, springCollision } from './episode-15/springs';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Hello } from '../hello.jsx';
 
 const sidebar = document.querySelector('#sidebar');
 
@@ -33,7 +36,7 @@ const components = {
   'Spring Collision': springCollision,
 };
 
-let currentComponentName = 'Spring Collision';
+let currentComponentName = 'Random Lines';
 
 function getComponent(componentName) {
   return components[componentName];

@@ -38,10 +38,22 @@
       .current {
         background: #CACACA;
       }
+      #controls {
+        position: relative;
+      }
+      #controls > div {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        background-color: tomato;
+        margin: 10px;
+        padding: 15px;
+      }
     </style>
   </head>
   <body>
     <div id="sidebar"></div>
+    <div id="controls"></div>
     <canvas id="canvas"></canvas>
     <script src="./build/bundle.js"></script>
     <script src="./bundle.js"></script>

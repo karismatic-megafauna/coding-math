@@ -15,6 +15,7 @@ import { springOne, springTwo, springCollision } from './episode-15/springs';
 
 const sidebar = document.querySelector('#sidebar');
 
+// move to componentConfig file?
 const components = {
   'Random Lines': randomLines,
   'Pendulum Wave': pendulumWave,
@@ -33,22 +34,27 @@ const components = {
   'Spring Collision': springCollision,
 };
 
+// default props?
 let currentComponentName = 'Random Lines';
 
+// Board.jsx
 function getComponent(componentName) {
   return components[componentName];
 }
 
+// this gets called by a linkClick
 function render() {
   const currentComponent = getComponent(currentComponentName);
   currentComponent.setUp();
 }
 
+// helper
 function clearSidebar() {
   const children = Array.from(sidebar.childNodes);
   children.map(child => child.classList.remove('current'));
 }
 
+// this calls a new render
 const linkClick = e => {
   clearSidebar();
   e.target.className += ' current';
@@ -60,6 +66,7 @@ const linkClick = e => {
   render();
 };
 
+// this constructs and sets up the sidebar...do I need a sidebar component?
 Object.keys(components).map(name => {
   const link = document.createElement('div');
   link.setAttribute('data-component', name);
@@ -68,4 +75,5 @@ Object.keys(components).map(name => {
   return sidebar.appendChild(link);
 });
 
+// initial render, could be default props
 render();

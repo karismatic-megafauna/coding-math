@@ -33,7 +33,6 @@ export class Counter extends React.Component {
 }
 Counter.propTypes = { initialCount: React.PropTypes.number };
 Counter.defaultProps = { initialCount: 0 };
-Counter.getState = () => { 'yes' };
 
 export const circleOfCircles = {
   tearDown() {

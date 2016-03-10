@@ -58,10 +58,12 @@ function clearSidebar() {
 const linkClick = e => {
   clearSidebar();
   e.target.className += ' current';
+  // is handled by componentWillUnmount?
   const prevComp = getComponent(currentComponentName);
   prevComp.tearDown();
 
   // Change component name
+  // do I just pass it a new component name here?
   currentComponentName = e.target.dataset.component;
   render();
 };

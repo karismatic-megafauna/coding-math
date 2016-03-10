@@ -10,7 +10,7 @@ export class Board extends Component {
         height: window.innerHeight,
       },
       context: null,
-      currentComponent: props.componentName,
+      component: props.componentName,
     };
   }
   componentDidMount() {
@@ -33,13 +33,13 @@ export class Board extends Component {
     clearSidebar();
     e.target.className += ' current';
 
-    const prevComp = getComponent(currentComponentName);
-    prevComp.tearDown();
+    // const prevComp = getComponent(currentComponentName);
+    component.tearDown();
 
     // Change component name
     // do I just pass it a new component name here?
-    currentComponentName = e.target.dataset.component;
-    render();
+    // currentComponentName = e.target.dataset.component;
+    // render();
     // Do i need redux yet? is this enough pain?
   }
 
@@ -70,5 +70,5 @@ Board.propTypes = {
 
 Board.defaultProps = {
   controls: { default: 'controls' },
-  componentName: 'Random Lines',
+  component: 'Random Lines',
 };

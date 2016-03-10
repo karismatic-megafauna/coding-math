@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Controls from './Controls';
+import { Controls } from './Controls.jsx';
 
 export class Board extends Component {
   constructor(props) {
@@ -15,10 +15,10 @@ export class Board extends Component {
   }
   componentDidMount() {
     const context = this.refs.canvas.getContext('2d');
-    this.setState({ context: context });
+    this.setState({ context: this.state.context });
     // maybe this is just a wrapper and each component implements it's
     // own update and setup methods?
-    this.setUp();
+    this.state.component.setUp();
     // requestAnimationFrame(() => {this.update()});
   }
 
@@ -26,21 +26,22 @@ export class Board extends Component {
     // delegate to children?
     // kill animation frame
     // remove listeners
-    this.tearDown();
+    this.state.component.tearDown();
   }
 
   linkClick(e) {
-    clearSidebar();
-    e.target.className += ' current';
+    // clearSidebar();
+    // e.target.className += ' current';
 
     // const prevComp = getComponent(currentComponentName);
-    component.tearDown();
+    // this.state.component.tearDown();
 
     // Change component name
     // do I just pass it a new component name here?
     // currentComponentName = e.target.dataset.component;
     // render();
     // Do i need redux yet? is this enough pain?
+    debugger;
   }
 
   render() {
@@ -48,14 +49,14 @@ export class Board extends Component {
       <div id="board">
         <div
           id="sidebar"
-          onClick={linkClick}
+          onClick={this.linkClick}
         />
         <canvas
           ref="canvas"
           width={this.state.screen.width}
           height={this.state.screen.height}
         />
-        <Controls controls={this.props.controls} />
+        <Controls />
       </div>
     );
   }

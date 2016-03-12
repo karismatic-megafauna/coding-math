@@ -52,6 +52,7 @@ export class Board extends Component {
           onClick={this.linkClick}
         />
         <canvas
+          id="canvas"
           ref="canvas"
           width={this.state.screen.width}
           height={this.state.screen.height}

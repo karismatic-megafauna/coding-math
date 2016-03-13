@@ -47,10 +47,6 @@ export class Board extends Component {
   render() {
     return (
       <div id="board">
-        <div
-          id="sidebar"
-          onClick={this.linkClick}
-        />
         <canvas
           id="canvas"
           ref="canvas"

@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Board } from './Board.jsx';
+import { Sidebar } from './Sidebar.jsx';
 import components from './components.js';
 // import style from './style.css';
 
@@ -16,13 +17,10 @@ var handleClick = function(comp, components) {
 function Main(props) {
   return (
     <div>
-      {Object.keys(props.components).map((component) => {
-        return (
-          <div onClick={handleClick.bind(this, component, props.components)}>
-            {component}
-          </div>
-        );
-      })}
+      <Sidebar
+        components={props.components}
+        onClick={handleClick.bind(this)}
+      />
       <Board />
     </div>
   );

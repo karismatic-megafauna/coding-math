@@ -6,11 +6,16 @@ import components from './components.js';
 // import style from './style.css';
 
 const mountPoint = document.getElementById('root');
-// The board should take a componentName
 // render(<Board />, document.getElementById('root'));
 
-var handleClick = function(comp, components) {
-  console.log(`You clicked:  ${components[comp]}`);
+let activeComponent = 'Ship';
+
+const handleClick = (comp) => {
+  // do something in here to change the component
+  // can't access setState from here...
+  activeComponent = comp;
+  console.log(`You clicked:  ${comp}`);
+  debugger;
 };
 
 // TODO: turn Main into Sidebar
@@ -20,6 +25,7 @@ function Main(props) {
       <Sidebar
         components={props.components}
         onClick={handleClick.bind(this)}
+        activeComponent={activeComponent}
       />
       <Board />
     </div>

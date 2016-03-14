@@ -50,9 +50,11 @@
     "babel-preset-react": "^6.5.0",
     "babel-register": "^6.3.13",
     "copy-webpack-plugin": "^0.3.3",
+    "css-loader": "^0.23.1",
     "express": "^4.13.4",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
+    "style-loader": "^0.13.0",
     "webpack": "^1.12.12"
   }
 }

@@ -15,10 +15,13 @@ const handleClick = (comp) => {
   // can't access setState from here...
   activeComponent = comp;
   console.log(`You clicked:  ${comp}`);
-  debugger;
+  // how do i cause a re-render? setState?
+  // this.Main();
 };
 
-// TODO: turn Main into Sidebar
+// is this harder as a pure component? is there anything i could use from having
+// access to the lifecycle methods?
+// How do I cause a re-render in this main function...
 function Main(props) {
   return (
     <div>

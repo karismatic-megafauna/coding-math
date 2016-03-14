@@ -7,11 +7,10 @@ export class Sidebar extends Component {
   }
 
   getComp(comp) {
-    debugger;
     return (
-      <div 
+      <div
         onClick={this.props.onClick.bind(null, comp)}
-        className={(this.props.activeComponent === this.props.comp) ? 'Active' : 'not'}
+        className={(this.state.activeComponent === comp) ? 'Active' : 'not'}
       >
         {comp}
       </div>

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import styles from '../css/App.css';
 
 export class Sidebar extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ export class Sidebar extends Component {
     return (
       <div
         onClick={this.props.onClick.bind(null, comp)}
-        className={(this.props.activeComponent === comp) ? 'Active' : ''}
+        className={(this.props.activeComponent === comp) ? styles.active : ''}
       >
         {comp}
       </div>

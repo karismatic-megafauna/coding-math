@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { Board } from './Board.jsx';
 import { Sidebar } from './Sidebar.jsx';
 import components from './components.js';
-// import style from './style.css';
+import styles from '../css/App.css';
 
 export class App extends Component {
   constructor(props) {

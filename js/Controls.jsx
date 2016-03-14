@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Slider from 'material-ui/lib/slider';
+// TODO: create the below stylesheet
+// import styles from '../css/Controls.css';
 
 export class Controls extends Component {
   constructor() {

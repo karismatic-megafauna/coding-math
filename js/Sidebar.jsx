@@ -3,14 +3,13 @@ import React, { Component, PropTypes } from 'react';
 export class Sidebar extends Component {
   constructor(props) {
     super(props);
-    this.state = { activeComponent: props.activeComponent };
   }
 
   getComp(comp) {
     return (
       <div
         onClick={this.props.onClick.bind(null, comp)}
-        className={(this.state.activeComponent === comp) ? 'Active' : 'not'}
+        className={(this.props.activeComponent === comp) ? 'Active' : ''}
       >
         {comp}
       </div>
@@ -29,8 +28,4 @@ Sidebar.propTypes = {
   onClick: PropTypes.func,
   components: PropTypes.object,
   activeComponent: PropTypes.string,
-};
-
-Sidebar.defaultProps = {
-  activeComponent: 'Random Lines',
 };

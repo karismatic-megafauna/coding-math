@@ -12,9 +12,11 @@ export class Board extends Component {
       context: null,
     };
   }
+
   componentDidMount() {
     const context = this.refs.canvas.getContext('2d');
     this.setState({ context });
+    this.props.componentList[this.props.activeComponent].setUp();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -42,5 +44,9 @@ Board.propTypes = {
   tearDown: PropTypes.func,
   controls: PropTypes.object,
   activeComponent: PropTypes.string,
-  componentList: PropTypes.object,
+  componentList: PropTypes.object.isRequired,
+};
+
+Board.defaultProps = {
+  activeComponent: 'Random Lines',
 };

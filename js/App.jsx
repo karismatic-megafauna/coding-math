@@ -15,7 +15,6 @@ export class App extends Component {
     };
   }
   handleClick(comp) {
-    debugger;
     this.setState({ activeComponent: comp });
     console.log(`You clicked:  ${comp}`);
   }
@@ -39,10 +38,6 @@ export class App extends Component {
 App.propTypes = {
   activeComponent: PropTypes.string,
   componentList: PropTypes.object.isRequired,
-};
-
-App.defaultProps = {
-  activeComponent: 'Random Lines',
 };
 
 render(

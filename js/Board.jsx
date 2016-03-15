@@ -10,38 +10,16 @@ export class Board extends Component {
         height: window.innerHeight,
       },
       context: null,
-      component: props.componentName,
     };
   }
   componentDidMount() {
     const context = this.refs.canvas.getContext('2d');
-    this.setState({ context: this.state.context });
-    // maybe this is just a wrapper and each component implements it's
-    // own update and setup methods?
-    this.state.component.setUp();
-    // requestAnimationFrame(() => {this.update()});
+    this.setState({ context });
   }
 
-  componentWillUnmount() {
-    // delegate to children?
-    // kill animation frame
-    // remove listeners
-    this.state.component.tearDown();
-  }
-
-  linkClick(e) {
-    // clearSidebar();
-    // e.target.className += ' current';
-
-    // const prevComp = getComponent(currentComponentName);
-    // this.state.component.tearDown();
-
-    // Change component name
-    // do I just pass it a new component name here?
-    // currentComponentName = e.target.dataset.component;
-    // render();
-    // Do i need redux yet? is this enough pain?
-    debugger;
+  componentWillReceiveProps(nextProps) {
+    this.props.componentList[this.props.activeComponent].tearDown();
+    nextProps.componentList[nextProps.activeComponent].setUp();
   }
 
   render() {
@@ -63,10 +41,6 @@ Board.propTypes = {
   setUp: PropTypes.func,
   tearDown: PropTypes.func,
   controls: PropTypes.object,
-  componentName: PropTypes.string,
-};
-
-Board.defaultProps = {
-  controls: { default: 'controls' },
-  component: 'Random Lines',
+  activeComponent: PropTypes.string,
+  componentList: PropTypes.object,
 };

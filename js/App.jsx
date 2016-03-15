@@ -5,15 +5,17 @@ import { Sidebar } from './Sidebar.jsx';
 import components from './components.js';
 // import styles from '../css/App.css';
 
+const mountPoint = document.getElementById('root');
+
 export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       activeComponent: props.activeComponent,
     };
-    this.beenClicked = [];
   }
   handleClick(comp) {
+    debugger;
     this.setState({ activeComponent: comp });
     console.log(`You clicked:  ${comp}`);
   }
@@ -21,11 +23,14 @@ export class App extends Component {
     return (
       <div>
         <Sidebar
-          components={this.props.components}
+          componentList={this.props.componentList}
           onClick={this.handleClick.bind(this)}
           activeComponent={this.state.activeComponent}
         />
-        <Board />
+        <Board
+          activeComponent={this.state.activeComponent}
+          componentList={this.props.componentList}
+        />
       </div>
     );
   }
@@ -33,16 +38,15 @@ export class App extends Component {
 
 App.propTypes = {
   activeComponent: PropTypes.string,
-  components: PropTypes.object.isRequired,
+  componentList: PropTypes.object.isRequired,
 };
 
 App.defaultProps = {
-  activeComponent: 'Ship',
+  activeComponent: 'Random Lines',
 };
 
-const mountPoint = document.getElementById('root');
 render(
   <App
-    components={components}
+    componentList={components}
   />, mountPoint
 );

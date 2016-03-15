@@ -1,46 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Slider from 'material-ui/lib/slider';
-
-class ControlPanel extends React.Component {
-  render() {
-    return (
-      <div>
-        <Slider defaultValue={1}/>
-        <Slider defaultValue={.5}/>
-      </div>
-    );
-  }
-}
-
-
-export class Counter extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {count: props.initialCount};
-  }
-  tick() {
-    this.setState({count: this.state.count + 1});
-		window.counterState = this.state.count + 1;
-  }
-  render() {
-    return (
-      <div onClick={this.tick.bind(this)}>
-        Clicks: {this.state.count}
-      </div>
-    );
-  }
-}
-Counter.propTypes = { initialCount: React.PropTypes.number };
-Counter.defaultProps = { initialCount: 0 };
-
 export const circleOfCircles = {
   tearDown() {
     // nothing to do yet
   },
   setUp() {
-
-    ReactDOM.render(<Counter/>, document.getElementById('controls'));
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
     const width = canvas.width = window.innerWidth;

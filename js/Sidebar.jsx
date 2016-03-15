@@ -20,7 +20,7 @@ export class Sidebar extends Component {
   render() {
     return (
       <div id="sidebar" className={styles.sidebar} >
-        {Object.keys(this.props.components).map((component, i) => this.getComp(component, i))}
+        {Object.keys(this.props.componentList).map((component, i) => this.getComp(component, i))}
       </div>
     );
   }
@@ -28,6 +28,6 @@ export class Sidebar extends Component {
 
 Sidebar.propTypes = {
   onClick: PropTypes.func,
-  components: PropTypes.object,
+  componentList: PropTypes.object,
   activeComponent: PropTypes.string,
 };

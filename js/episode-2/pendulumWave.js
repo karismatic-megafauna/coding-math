@@ -17,7 +17,7 @@ export const pendulumWave = {
     const waveStep = Math.PI / 36;
     let start = 0;
     let end = Math.PI * 2;
-    function render() {
+    function update() {
       context.clearRect(0, 0, canvas.width, canvas.height);
 
       context.save();
@@ -50,9 +50,9 @@ export const pendulumWave = {
 
       context.restore();
       if (switcher.on) {
-        frameId = requestAnimationFrame(render);
+        frameId = requestAnimationFrame(update);
       }
     }
-    render();
+    update();
   },
 };

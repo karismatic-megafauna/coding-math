@@ -20,7 +20,7 @@ export const growingCircle = {
     const speed = 0.011;
     let angle = 0;
 
-    function render() {
+    function update() {
       const radius = base + Math.sin(angle) * offset;
 
       context.clearRect(0, 0, width, height);
@@ -30,10 +30,10 @@ export const growingCircle = {
 
       angle += speed;
       if (switcher.on) {
-        frameId = requestAnimationFrame(render);
+        frameId = requestAnimationFrame(update);
       }
     }
 
-    render();
+    update();
   },
 };

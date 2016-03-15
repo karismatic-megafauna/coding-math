@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { Board } from './Board.jsx';
 import { Sidebar } from './Sidebar.jsx';
 import components from './components.js';
-// import styles from '../css/App.css';
+import styles from '../css/App.css';
 
 const mountPoint = document.getElementById('root');
 
@@ -16,11 +16,10 @@ export class App extends Component {
   }
   handleClick(comp) {
     this.setState({ activeComponent: comp });
-    console.log(`You clicked:  ${comp}`);
   }
   render() {
     return (
-      <div>
+      <div className={styles.app} >
         <Sidebar
           componentList={this.props.componentList}
           onClick={this.handleClick.bind(this)}

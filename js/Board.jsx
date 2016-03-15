@@ -1,25 +1,18 @@
 import React, { Component, PropTypes } from 'react';
 import { Controls } from './Controls.jsx';
+import styles from '../css/Board.css';
 
 export class Board extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      screen: {
-        width: window.innerWidth,
-        height: window.innerHeight,
-      },
-      context: null,
-    };
   }
 
   componentDidMount() {
-    const context = this.refs.canvas.getContext('2d');
-    this.setState({ context });
     this.props.componentList[this.props.activeComponent].setUp();
   }
 
   componentWillReceiveProps(nextProps) {
+    debugger;
     this.props.componentList[this.props.activeComponent].tearDown();
     nextProps.componentList[nextProps.activeComponent].setUp();
   }
@@ -30,8 +23,9 @@ export class Board extends Component {
         <canvas
           id="canvas"
           ref="canvas"
-          width={this.state.screen.width}
-          height={this.state.screen.height}
+          className={styles.canvas}
+          width={window.innerWidth}
+          height={window.innerHeight}
         />
         <Controls />
       </div>

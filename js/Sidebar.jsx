@@ -6,9 +6,10 @@ export class Sidebar extends Component {
     super(props);
   }
 
-  getComp(comp) {
+  getComp(comp, i) {
     return (
       <div
+        key={i}
         onClick={this.props.onClick.bind(null, comp)}
         className={(this.props.activeComponent === comp) ? styles.active : ''}
       >
@@ -19,7 +20,7 @@ export class Sidebar extends Component {
   render() {
     return (
       <div id="sidebar" className={styles.sidebar} >
-        {Object.keys(this.props.components).map((component) => this.getComp(component))}
+        {Object.keys(this.props.components).map((component, i) => this.getComp(component, i))}
       </div>
     );
   }

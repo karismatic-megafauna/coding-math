@@ -54,5 +54,9 @@ export const pendulumWave = {
       }
     }
     update();
-  },
-};
+  }
+  render() {
+debugger;
+    this.setUp();
+  }
+}

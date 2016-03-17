@@ -1,7 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import styles from '../css/Sidebar.css';
 
-export class Sidebar extends Component {
+eeport class Sidebar extends React.Component {
+  static propTypes = {
+    onClick: PropTypes.func,
+    componentList: PropTypes.object,
+    activeComponent: PropTypes.string,
+  };
   constructor(props) {
     super(props);
   }
@@ -25,9 +30,3 @@ export class Sidebar extends Component {
     );
   }
 }
-
-Sidebar.propTypes = {
-  onClick: PropTypes.func,
-  componentList: PropTypes.object,
-  activeComponent: PropTypes.string,
-};

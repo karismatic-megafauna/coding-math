@@ -1,12 +1,16 @@
+import React, { Component, PropTypes } from 'react';
+
+// move to state
 const switcher = { on: false };
 let frameId;
 
-export const pendulumWave = {
-  tearDown() {
+export class pendulumWave extends Component {
+  componentWillUnmount() {
     switcher.on = false;
     cancelAnimationFrame(frameId);
-  },
+  }
   setUp() {
+    // throw in a util
     switcher.on = true;
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
@@ -24,7 +28,6 @@ export const pendulumWave = {
 
       context.translate(0, height / 2);
       context.scale(1, -1);
-
 
       const freq = end - start;
       const points = 100;

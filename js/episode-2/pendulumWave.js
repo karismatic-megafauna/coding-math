@@ -59,7 +59,6 @@ export class pendulumWave extends Component {
     update();
   }
   render() {
-debugger;
-    this.setUp();
+    return this.setUp();
   }
 }

@@ -11,8 +11,9 @@ export class Board extends Component {
     this.props.componentList[this.props.activeComponent].setUp();
   }
 
+  // this needs to go away
+  // each component should implement this
   componentWillReceiveProps(nextProps) {
-    debugger;
     this.props.componentList[this.props.activeComponent].tearDown();
     nextProps.componentList[nextProps.activeComponent].setUp();
   }

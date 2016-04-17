@@ -17,7 +17,6 @@ export class RandomLines extends Component {
       context.lineTo(Math.random() * width, Math.random() * height);
       context.stroke();
     }
-    debugger;
   }
   componentWillUnmount() {
     console.log('component unmounted');
@@ -26,3 +25,7 @@ export class RandomLines extends Component {
     return this.props.canvas;
   }
 }
+
+RandomLines.propTypes = {
+  canvas: PropTypes.element,
+};

@@ -19,11 +19,11 @@ export class GrowingCircle extends Component {
         <div className={styles.controls} >
           <Slider
             defaultValue={0.5}
-            onChange={(e, value) => this.setState({ base: lerp(value, 50, 300 )}) }
+            onChange={(e, value) => this.setState({ base: lerp(value, 50, 300)}) }
           />
           <Slider
             defaultValue={0.5}
-            onChange={(e, value) => this.setState({ speed: lerp(value, 0.01, .1)}) }
+            onChange={(e, value) => this.setState({ speed: lerp(value, 0.01, 0.5)}) }
           />
         </div>
         <Animation

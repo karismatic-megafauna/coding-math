@@ -1,10 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
 export class RandomLines extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
@@ -17,9 +13,6 @@ export class RandomLines extends Component {
       context.lineTo(Math.random() * width, Math.random() * height);
       context.stroke();
     }
-  }
-  componentWillUnmount() {
-    console.log('component unmounted');
   }
   render() {
     return this.props.canvas;

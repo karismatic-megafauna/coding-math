@@ -1,11 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
-const switcher = { on: false };
-let frameId;
-
 export class GrowingCircle extends Component {
   componentDidMount() {
-    switcher.on = true;
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
     const width = canvas.width = window.innerWidth;
@@ -27,16 +23,10 @@ export class GrowingCircle extends Component {
       context.fill();
 
       angle += speed;
-      if (switcher.on) {
-        frameId = requestAnimationFrame(update);
-      }
+      requestAnimationFrame(update);
     }
 
     update();
-  }
-  componentWillUnmount() {
-    switcher.on = false;
-    cancelAnimationFrame(frameId);
   }
   render() {
     return this.props.canvas;

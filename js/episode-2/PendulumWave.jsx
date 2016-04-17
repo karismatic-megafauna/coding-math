@@ -1,12 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
-const switcher = { on: false };
-let frameId;
-
 export class PendulumWave extends Component {
   componentDidMount() {
-    // throw in a util
-    switcher.on = true;
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
     const width = canvas.width = window.innerWidth;
@@ -47,15 +42,9 @@ export class PendulumWave extends Component {
       end = end + waveStep;
 
       context.restore();
-      if (switcher.on) {
-        frameId = requestAnimationFrame(update);
-      }
+      requestAnimationFrame(update);
     }
     update();
-  }
-  componentWillUnmount() {
-    switcher.on = false;
-    cancelAnimationFrame(frameId);
   }
   render() {
     return this.props.canvas;
@@ -64,4 +53,4 @@ export class PendulumWave extends Component {
 
 PendulumWave.propTypes = {
   canvas: PropTypes.element,
-}
+};

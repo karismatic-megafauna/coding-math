@@ -8,7 +8,7 @@ export class Board extends Component {
   }
 
   componentDidMount() {
-    this.props.componentList[this.props.activeComponent].setUp();
+    // this.props.componentList[this.props.activeComponent].setUp();
   }
 
   // this needs to go away
@@ -42,6 +42,3 @@ Board.propTypes = {
   componentList: PropTypes.object.isRequired,
 };
 
-Board.defaultProps = {
-  activeComponent: 'Random Lines',
-};

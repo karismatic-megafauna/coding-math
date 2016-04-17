@@ -1,21 +1,35 @@
 import React, { Component, PropTypes } from 'react';
+import { findDOMNode } from 'react-dom';
+
 
 export class RandomLines extends Component {
-  componentDidMount() {
-    const canvas = document.getElementById('canvas');
-    const context = canvas.getContext('2d');
-    const width = canvas.width = window.innerWidth;
-    const height = canvas.height = window.innerHeight;
-
-    for (let i = 1; i < 100; i += 1) {
-      context.beginPath();
-      context.moveTo(Math.random() * width, Math.random() * height);
-      context.lineTo(Math.random() * width, Math.random() * height);
-      context.stroke();
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      context: null,
+    };
   }
+  componentDidMount() {
+    this.setState({ context: findDOMNode(this.refs.canvas).getContext('2d') });
+  }
+
   render() {
-    return this.props.canvas;
+    const { context } = this.state;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    if (context) {
+      for (let i = 1; i < 100; i += 1) {
+        context.beginPath();
+        context.moveTo(Math.random() * width, Math.random() * height);
+        context.lineTo(Math.random() * width, Math.random() * height);
+        context.stroke();
+      }
+    }
+
+    return (
+      <canvas ref="canvas" width={width} height={height} />
+    );
   }
 }
 

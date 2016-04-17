@@ -25,10 +25,7 @@ export class App extends Component {
           onClick={this.handleClick.bind(this)}
           activeComponent={this.state.activeComponent}
         />
-        <Board
-          activeComponent={this.state.activeComponent}
-          componentList={this.props.componentList}
-        />
+        <Board />
       </div>
     );
   }

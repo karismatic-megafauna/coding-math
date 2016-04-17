@@ -1,6 +1,4 @@
 // components file
-import 'babel-polyfill';
-import { randomLines } from './episode-1/randomLines';
 import { pendulumWave } from './episode-2/pendulumWave';
 import { growingCircle } from './episode-3/growingCircle';
 import { circleOfCircles } from './episode-4/circleOfCircles';
@@ -18,7 +16,6 @@ const sidebar = document.querySelector('#sidebar');
 
 // move to componentConfig file?
 export default {
-  'Random Lines': randomLines,
   'Pendulum Wave': pendulumWave,
   'Growing Circle': growingCircle,
   'Circle of Circles': circleOfCircles,

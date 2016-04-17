@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Controls } from './Controls.jsx';
 import styles from '../css/Board.css';
+import { RandomLines } from './episode-1/RandomLines.jsx';
 
 export class Board extends Component {
   constructor(props) {
@@ -13,22 +14,24 @@ export class Board extends Component {
 
   // this needs to go away
   // each component should implement this
-  componentWillReceiveProps(nextProps) {
-    this.props.componentList[this.props.activeComponent].tearDown();
-    nextProps.componentList[nextProps.activeComponent].setUp();
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   this.props.componentList[this.props.activeComponent].tearDown();
+  //   nextProps.componentList[nextProps.activeComponent].setUp();
+  // }
 
   render() {
     return (
       <div id="board">
-        <canvas
-          id="canvas"
-          ref="canvas"
-          className={styles.canvas}
-          width={window.innerWidth}
-          height={window.innerHeight}
+        <RandomLines canvas={
+          <canvas
+            id="canvas"
+            ref="canvas"
+            className={styles.canvas}
+            width={window.innerWidth}
+            height={window.innerHeight}
+          />
+          }
         />
-        <Controls />
       </div>
     );
   }
@@ -39,6 +42,5 @@ Board.propTypes = {
   tearDown: PropTypes.func,
   controls: PropTypes.object,
   activeComponent: PropTypes.string,
-  componentList: PropTypes.object.isRequired,
 };
 

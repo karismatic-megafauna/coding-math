@@ -1,7 +1,22 @@
 import React, { Component, PropTypes } from 'react';
+import Slider from 'material-ui/lib/slider';
+import styles from '../../css/Controls.css';
 
 export class GrowingCircle extends Component {
+  constructor() {
+    super();
+    this.state = {
+      base: 0,
+      speed: 0.011,
+    };
+  }
   componentDidMount() {
+    // do this to cause componentDidUpdate to fire
+    this.setState({ base: 100 });
+  }
+
+  componentDidUpdate() {
+    console.log('component updated');
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
     const width = canvas.width = window.innerWidth;
@@ -9,9 +24,9 @@ export class GrowingCircle extends Component {
 
     const centerY = height * 0.5;
     const centerX = width * 0.5;
-    const base = 100;
+    const base = this.state.base;
     const offset = 50;
-    const speed = 0.011;
+    const speed = this.state.speed;
     let angle = 0;
 
     function update() {
@@ -28,8 +43,26 @@ export class GrowingCircle extends Component {
 
     update();
   }
+
   render() {
-    return this.props.canvas;
+    return (
+      <div>
+        {this.props.canvas}
+        <div className={styles.controls} >
+          <Slider
+            defaultValue={0.5}
+            onDragStop={() => {
+              debugger;
+              this.setState({ base: 200 });
+            }}
+          />
+          <Slider
+            defaultValue={0.5}
+            onDragStop={() => {console.log('onDragEnd')}}
+          />
+        </div>
+      </div>
+    );
   }
 }
 

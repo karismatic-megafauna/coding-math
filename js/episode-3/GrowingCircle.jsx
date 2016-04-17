@@ -1,12 +1,10 @@
+import React, { Component, PropTypes } from 'react';
+
 const switcher = { on: false };
 let frameId;
 
-export const growingCircle = {
-  tearDown() {
-    switcher.on = false;
-    cancelAnimationFrame(frameId);
-  },
-  setUp() {
+export class GrowingCircle extends Component {
+  componentDidMount() {
     switcher.on = true;
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
@@ -35,5 +33,16 @@ export const growingCircle = {
     }
 
     update();
-  },
+  }
+  componentWillUnmount() {
+    switcher.on = false;
+    cancelAnimationFrame(frameId);
+  }
+  render() {
+    return this.props.canvas;
+  }
+}
+
+GrowingCircle.propTypes = {
+  canvas: PropTypes.element,
 };

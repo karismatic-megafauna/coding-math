@@ -12,7 +12,6 @@ export class Sidebar extends React.Component {
     super(props);
   }
 
-  // this needs to set the state of the active component
   getComp(comp, i) {
     return (
       <div

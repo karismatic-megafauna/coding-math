@@ -41,6 +41,7 @@ App.propTypes = {
 
 render(
   <App
+    activeComponent="Random Lines"
     componentList={components}
   />, mountPoint
 );

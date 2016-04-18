@@ -1,0 +1,13 @@
+.controls {
+  width: 300px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: aliceblue;
+  margin: 15px;
+  padding: 0 30px;
+}
+
+.controls > div:first-of-type {
+  padding-top: 20px;
+}

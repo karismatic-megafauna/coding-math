@@ -10,10 +10,10 @@ var dir_html = path.resolve(__dirname, 'html');
 var dir_build = path.resolve(__dirname, 'build');
 
 module.exports = {
-  entry: path.resolve(dir_js, 'main.js'),
+  entry: path.resolve(dir_js, 'App.jsx'),
   output: {
     path: dir_build,
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   devServer: {
     contentBase: dir_build,
@@ -21,23 +21,35 @@ module.exports = {
   module: {
     loaders: [
       {
+        test: dir_js,
         exclude: /node_modules/,
         loader: 'babel-loader',
-        test: dir_js,
-      }
-    ]
+      },
+      {
+        test: /.jsx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['es2015', 'stage-0', 'react'],
+        },
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+      },
+    ],
   },
   plugins: [
     // Simply copies the files over
     new CopyWebpackPlugin([
-      { from: dir_html } // to: output.path
+      { from: dir_html }, // to: output.path
     ]),
     // Avoid publishing files when compilation fails
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
   ],
   stats: {
     // Nice colored output
-    colors: true
+    colors: true,
   },
   // Create Sourcemaps for the bundle
   devtool: 'source-map',

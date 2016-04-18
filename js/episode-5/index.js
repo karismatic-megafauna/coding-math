@@ -18,7 +18,7 @@ export const pointAtMouse = {
     let dy = 0;
     let angle = 0;
 
-    function render() {
+    function update() {
       context.clearRect(0, 0, width, height);
 
       context.save();
@@ -37,11 +37,11 @@ export const pointAtMouse = {
 
       context.restore();
       if (switcher.on) {
-        frameId = requestAnimationFrame(render);
+        frameId = requestAnimationFrame(update);
       }
     }
 
-    render();
+    update();
 
     document.body.addEventListener('mousemove', (event) => {
       dx = event.clientX - arrowX;

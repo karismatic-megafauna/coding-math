@@ -1,7 +1,7 @@
 // components file
 import { GrowingCircle } from './episode-3/GrowingCircle.jsx';
 // import { circleOfCircles } from './episode-4/circleOfCircles';
-// import { bigBang } from './episode-8/bigBang';
+import { BigBang } from './episode-8/BigBang.jsx';
 // import { fireWorks } from './episode-9/fireWorks';
 // import { ship } from './episode-10/ship';
 // import { orbit } from './episode-11/orbit';
@@ -13,7 +13,6 @@ import { GrowingCircle } from './episode-3/GrowingCircle.jsx';
 import { RandomLines } from './episode-1/RandomLines.jsx';
 import { PendulumWave } from './episode-2/PendulumWave.jsx';
 
-const sidebar = document.querySelector('#sidebar');
 
 // move to componentConfig file?
 export default {
@@ -21,7 +20,7 @@ export default {
   'Pendulum Wave': PendulumWave,
   'Growing Circle': GrowingCircle,
   // 'Circle of Circles': circleOfCircles,
-  // 'Big Bang': bigBang,
+  'Big Bang': BigBang,
   // 'Fireworks': fireWorks,
   // 'Ship': ship,
   // 'Orbit': orbit,
@@ -33,4 +32,3 @@ export default {
   // 'Mouse Spring 2': springTwo,
   // 'Spring Collision': springCollision,
 };
-

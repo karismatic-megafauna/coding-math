@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import LeftNav from 'material-ui/lib/left-nav';
 import RaisedButton from 'material-ui/lib/raised-button';
+import FlatButton from 'material-ui/lib/flat-button';
 import styles from '../css/Sidebar.css';
 
 
@@ -38,7 +39,7 @@ export class Sidebar extends React.Component {
           <div id="sidebar" className={styles.sidebar} >
             {Object.keys(this.props.componentList).map((component, i) => this.getComp(component, i))}
             <span className={styles.close}>
-              <RaisedButton label="Close Sidebar" onClick={this.handleToggle} />
+              <FlatButton label="Close Sidebar" onClick={this.handleToggle} />
             </span>
           </div>
         </LeftNav>

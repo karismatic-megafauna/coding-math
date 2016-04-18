@@ -14,7 +14,7 @@ export class Sidebar extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { open: false };
+    this.state = { open: true };
   }
 
   getComp(comp, i) {

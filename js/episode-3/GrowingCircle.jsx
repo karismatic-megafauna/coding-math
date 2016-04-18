@@ -9,7 +9,7 @@ export class GrowingCircle extends Component {
     super();
     this.state = {
       base: 100,
-      speed: 0.011,
+      speed: 0.1,
     };
   }
 

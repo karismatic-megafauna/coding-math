@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { lerp } from '../utils.js'
+import { lerp } from '../utils.js';
 import Slider from 'material-ui/lib/slider';
 import styles from '../../css/Controls.css';
 import Animation from './Animation.jsx';
@@ -17,10 +17,12 @@ export class GrowingCircle extends Component {
     return (
       <div>
         <div className={styles.controls} >
+          <div> Size </div>
           <Slider
             defaultValue={0.5}
             onChange={(e, value) => this.setState({ base: lerp(value, 50, 300)}) }
           />
+          <div> Speed </div>
           <Slider
             defaultValue={0.5}
             onChange={(e, value) => this.setState({ speed: lerp(value, 0.01, 0.5)}) }

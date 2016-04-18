@@ -7,3 +7,7 @@
   margin: 15px;
   padding: 0 30px;
 }
+
+.controls > div:first-of-type {
+  padding-top: 20px;
+}

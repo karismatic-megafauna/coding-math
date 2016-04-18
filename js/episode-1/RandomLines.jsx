@@ -19,6 +19,7 @@ export class RandomLines extends Component {
     const height = window.innerHeight;
 
     if (context) {
+      context.clearRect(0, 0, this.refs.canvas.width, this.refs.canvas.height);
       for (let i = 1; i < 100; i += 1) {
         context.beginPath();
         context.moveTo(Math.random() * width, Math.random() * height);

@@ -1,56 +1,37 @@
 import React, { Component, PropTypes } from 'react';
+import { lerp } from '../utils.js';
+import Slider from 'material-ui/lib/slider';
+import styles from '../../css/Controls.css';
+import Animation from './Animation.jsx';
 
 export class PendulumWave extends Component {
-  componentDidMount() {
-    const canvas = document.getElementById('canvas');
-    const context = canvas.getContext('2d');
-    const width = canvas.width = window.innerWidth;
-    const height = canvas.height = window.innerHeight;
-    const green = 0;
-
-    const waveStep = Math.PI / 36;
-    let start = 0;
-    let end = Math.PI * 2;
-    function update() {
-      context.clearRect(0, 0, canvas.width, canvas.height);
-
-      context.save();
-
-      context.translate(0, height / 2);
-      context.scale(1, -1);
-
-      const freq = end - start;
-      const points = 100;
-      const stepNum = freq / points;
-      const stepLength = (width / points);
-      const amp = 400;
-      let y = 0;
-      let x = 0;
-      let yScaler = 0;
-      for (start; start < end; start += stepNum) {
-        x = x + stepLength;
-        y = Math.sin(start) * amp;
-        yScaler = Math.abs(y) / 600;
-        const red = Math.floor(255 - (yScaler * 255));
-        const blue = Math.floor(255 * yScaler);
-        context.beginPath();
-        context.arc(x, y, 5, 0, Math.PI * 2, false);
-        context.fillStyle = `rgb( ${red} , ${green} , ${blue})`;
-        context.fill();
-      }
-      start = waveStep;
-      end = end + waveStep;
-
-      context.restore();
-      requestAnimationFrame(update);
-    }
-    update();
+  constructor() {
+    super();
+    this.state = {
+      points: 100,
+      amp: 400,
+    };
   }
   render() {
-    return this.props.canvas;
+    return (
+      <div>
+        <div className={styles.controls} >
+          <div> Points </div>
+          <Slider
+            defaultValue={0.5}
+            onChange={(e, value) => this.setState({ points: lerp(value, 4, 250)}) }
+          />
+          <div> Amplitude </div>
+          <Slider
+            defaultValue={0.5}
+            onChange={(e, value) => this.setState({ amp: lerp(value, 25, 500)}) }
+          />
+        </div>
+        <Animation
+          points={this.state.points}
+          amp={this.state.amp}
+        />
+      </div>
+    );
   }
 }
-
-PendulumWave.propTypes = {
-  canvas: PropTypes.element,
-};

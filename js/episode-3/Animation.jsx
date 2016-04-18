@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
-import Slider from 'material-ui/lib/slider';
-import styles from '../../css/Controls.css';
 let frameId = 0;
 
 export default class Animation extends Component {
@@ -29,16 +27,16 @@ export default class Animation extends Component {
 
 
   render() {
-    const { base, speed } = this.props;
+    const { base } = this.props;
     const { angle, context } = this.state;
     const height = window.innerHeight;
     const width = window.innerWidth;
     const offset = 50;
+    const centerY = height * 0.5;
+    const centerX = width * 0.5;
+    const radius = base + Math.sin(angle) * offset;
 
     if (context) {
-      const radius = base + Math.sin(angle) * offset;
-      const centerY = height * 0.5;
-      const centerX = width * 0.5;
       context.clearRect(0, 0, width, height);
       context.beginPath();
       context.arc(centerX, centerY, radius, 0, Math.PI * 2, false);
@@ -52,5 +50,6 @@ export default class Animation extends Component {
 }
 
 Animation.propTypes = {
-  canvas: PropTypes.element,
+  base: PropTypes.number,
+  speed: PropTypes.number,
 };

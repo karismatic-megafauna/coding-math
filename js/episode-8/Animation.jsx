@@ -1,5 +1,7 @@
-port React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
+import { particle } from '../particle';
+import { removeDeadParticles } from '../utils';
 let frameId = 0;
 
 export default class Animation extends Component {
@@ -22,7 +24,6 @@ export default class Animation extends Component {
 
   loop() {
     this.setState({
-      end: this.state.end + this.state.waveStep,
       start: this.state.waveStep,
     });
     frameId = requestAnimationFrame(this.loop.bind(this));

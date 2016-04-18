@@ -5,7 +5,7 @@
 .sidebar {
   position: absolute;
   display: inline-block;
-  width: 150px;
+  width: 100%;
   background: #AAA;
   height: 100%;
   opacity: .9;
@@ -20,4 +20,15 @@
 .sidebar > div:hover {
   cursor: pointer;
   background: #EAEAEA;
+}
+
+.close {
+  display: block;
+  margin-top: 50px;
+  width: 100%;
+  background: #F3F3F3;
+}
+
+.close > button {
+  width: 100%;
 }

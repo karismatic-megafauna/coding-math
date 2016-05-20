@@ -23,6 +23,7 @@ export default class Animation extends Component {
   }
 
   loop() {
+    // trigger a re-render
     this.setState({
       start: this.state.waveStep,
     });

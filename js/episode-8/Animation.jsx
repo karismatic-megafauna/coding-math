@@ -15,6 +15,7 @@ export default class Animation extends Component {
 
   componentDidMount() {
     this.setState({ context: findDOMNode(this.refs.canvas).getContext('2d') });
+    this.initParticles();
     this.loop();
   }
 
@@ -22,20 +23,10 @@ export default class Animation extends Component {
     cancelAnimationFrame(frameId);
   }
 
-  loop() {
-    // trigger a re-render
-    this.setState({
-      start: this.state.waveStep,
-    });
-    frameId = requestAnimationFrame(this.loop.bind(this));
-  }
-
-  render() {
-    const { context } = this.state;
+  initParticles() {
     const height = window.innerHeight;
     const width = window.innerWidth;
-    const { particles } = this.state;
-
+    const particles = [];
     for (let i = 0; i < 100; i++) {
       particles.push(
         particle.create(
@@ -46,6 +37,24 @@ export default class Animation extends Component {
         )
       );
     }
+    this.setState({particles});
+  }
+
+  loop() {
+    // trigger a re-render
+    this.setState({
+      start: this.state.waveStep,
+    });
+    frameId = requestAnimationFrame(this.loop.bind(this));
+
+  }
+
+  render() {
+    const { context } = this.state;
+    const height = window.innerHeight;
+    const width = window.innerWidth;
+    const { particles } = this.state;
+
 
     if (context) {
       context.clearRect(0, 0, width, height);

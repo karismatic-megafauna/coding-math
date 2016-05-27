@@ -4,18 +4,26 @@ import { particle } from '../particle';
 import { removeDeadParticles } from '../utils';
 let frameId = 0;
 
+const times = (n, fn) => {
+  const results = [];
+  for (var i = 0; i < n; i++) {
+    results.push(fn(i));
+  }
+  return results;
+}
+
 export default class Animation extends Component {
   constructor(props) {
     super(props);
+    const num = props.num || 100;
     this.state = {
-      particles: [],
+      particles: this.createParticles(num),
       context: null,
     };
   }
 
   componentDidMount() {
     this.setState({ context: findDOMNode(this.refs.canvas).getContext('2d') });
-    this.initParticles();
     this.loop();
   }
 
@@ -23,21 +31,14 @@ export default class Animation extends Component {
     cancelAnimationFrame(frameId);
   }
 
-  initParticles() {
-    const height = window.innerHeight;
-    const width = window.innerWidth;
-    const particles = [];
-    for (let i = 0; i < 100; i++) {
-      particles.push(
-        particle.create(
-          width / 2,
-          height / 2,
-          1,
-          Math.random() * Math.PI * 2
-        )
-      );
-    }
-    this.setState({particles});
+  createParticles(num) {
+    const {innerWidth, innerHeight} = window;
+    return times(num, i => particle.create(
+      innerWidth / 2,
+      innerHeight / 2,
+      1,
+      Math.random() * Math.PI * 2
+    ));
   }
 
   loop() {
@@ -45,7 +46,9 @@ export default class Animation extends Component {
     this.setState({
       start: this.state.waveStep,
     });
-    frameId = requestAnimationFrame(this.loop.bind(this));
+    if ( this.state.particles.length) {
+      frameId = requestAnimationFrame(this.loop.bind(this));
+    }
 
   }
 

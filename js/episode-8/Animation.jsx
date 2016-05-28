@@ -6,24 +6,29 @@ let frameId = 0;
 
 const times = (n, fn) => {
   const results = [];
-  for (var i = 0; i < n; i++) {
+  for (let i = 0; i < n; i++) {
     results.push(fn(i));
   }
   return results;
-}
+};
 
 export default class Animation extends Component {
+  static propTypes = {
+    num: PropTypes.number,
+    speed: PropTypes.number,
+  }
+
   constructor(props) {
     super(props);
-    const num = props.num || 100;
+    const { innerWidth, innerHeight } = window;
     this.state = {
-      particles: this.createParticles(num),
-      context: null,
+      particles: this.createParticles(this.props.num, innerWidth / 2, innerHeight / 2),
+      ctx: null,
     };
   }
 
   componentDidMount() {
-    this.setState({ context: findDOMNode(this.refs.canvas).getContext('2d') });
+    this.setState({ ctx: findDOMNode(this.refs.canvas).getContext('2d') });
     this.loop();
   }
 
@@ -31,18 +36,32 @@ export default class Animation extends Component {
     cancelAnimationFrame(frameId);
   }
 
-  createParticles(num) {
-    const {innerWidth, innerHeight} = window;
-    return times(num, i => particle.create(
-      innerWidth / 2,
-      innerHeight / 2,
-      3,
+
+  createParticles(num, x, y) {
+    return times(num, () => particle.create(
+      x,
+      y,
+      this.props.speed,
       Math.random() * Math.PI * 2
     ));
   }
 
-  updateParticle(particle) {
-    return particle.update() || particle;
+  addMoreParticles(num, mouseX, mouseY) {
+    const { particles } = this.state;
+    const rect = findDOMNode(this.refs.canvas).getBoundingClientRect();
+    const canvasX = mouseX - rect.left;
+    const canvasY = mouseY - rect.top;
+
+    if (particles.length === 0) {
+      frameId = requestAnimationFrame(this.loop.bind(this));
+    }
+    this.setState({
+      particles: particles.concat(this.createParticles(num, canvasX, canvasY)),
+    });
+  }
+
+  updateParticle(p) {
+    return p.update() || p;
   }
 
   loop() {
@@ -54,39 +73,41 @@ export default class Animation extends Component {
       innerWidth,
       innerHeight
     );
-    if ( updatedParticles.length) {
+
+    if (updatedParticles.length) {
       frameId = requestAnimationFrame(this.loop.bind(this));
     }
 
-    this.setState({particles: updatedParticles});
+    this.setState({ particles: updatedParticles });
   }
 
   render() {
-    const { context } = this.state;
+    const { ctx } = this.state;
     const height = window.innerHeight;
     const width = window.innerWidth;
     const { particles } = this.state;
 
-
-    // Render updated particles on context
-    if (context) {
-      context.clearRect(0, 0, width, height);
+    // Render updated particles on ctx
+    if (ctx) {
+      ctx.clearRect(0, 0, width, height);
       particles.map(p => {
-        context.beginPath();
-        context.arc(p.position.getX(), p.position.getY(), 10, 0, Math.PI * 2, false);
-        context.fill();
+        ctx.beginPath();
+        ctx.arc(p.position.getX(), p.position.getY(), 10, 0, Math.PI * 2, false);
+        ctx.fill();
       });
-      context.font = '24px serif';
-      context.fillText(`particles on page: ${particles.length}`, 200, 50);
+      ctx.font = '24px serif';
+      ctx.fillText(`particles on page: ${particles.length}`, 200, 50);
     }
 
     return (
-      <canvas ref="canvas" width={width} height={height} />
+      <canvas
+        ref="canvas"
+        onClick={(e) => {
+          this.addMoreParticles(this.props.num, e.clientX, e.clientY);
+        }}
+        width={width}
+        height={height}
+      />
     );
   }
 }
-
-Animation.propTypes = {
-  amp: PropTypes.number,
-  points: PropTypes.number,
-};

@@ -13,12 +13,16 @@ const times = (n, fn) => {
 };
 
 export default class Animation extends Component {
+  static propTypes = {
+    num: PropTypes.number,
+    speed: PropTypes.number,
+  }
+
   constructor(props) {
     super(props);
     const { innerWidth, innerHeight } = window;
-    const num = 100;
     this.state = {
-      particles: this.createParticles(num, innerWidth / 2, innerHeight / 2),
+      particles: this.createParticles(this.props.num, innerWidth / 2, innerHeight / 2),
       ctx: null,
     };
   }
@@ -37,7 +41,7 @@ export default class Animation extends Component {
     return times(num, () => particle.create(
       x,
       y,
-      3,
+      this.props.speed,
       Math.random() * Math.PI * 2
     ));
   }
@@ -99,7 +103,7 @@ export default class Animation extends Component {
       <canvas
         ref="canvas"
         onClick={(e) => {
-          this.addMoreParticles(200, e.clientX, e.clientY);
+          this.addMoreParticles(this.props.num, e.clientX, e.clientY);
         }}
         width={width}
         height={height}

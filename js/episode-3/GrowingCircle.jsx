@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { lerp } from '../utils.js';
 import Slider from 'material-ui/lib/slider';
 import styles from '../../css/Controls.css';

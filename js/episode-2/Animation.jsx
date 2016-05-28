@@ -36,6 +36,7 @@ export default class Animation extends Component {
     const height = window.innerHeight;
     const width = window.innerWidth;
     const green = 0;
+    const radius = this.props.radius;
     let start = this.state.start;
     const end = this.state.end;
 
@@ -51,17 +52,20 @@ export default class Animation extends Component {
       const stepNum = freq / points;
       const stepLength = (width / points);
       const amp = this.props.amp;
+      const depthAmp = this.props.depthAmp;
       let y = 0;
       let x = 0;
       let yScaler = 0;
       for (start; start < end; start += stepNum) {
         x = x + stepLength;
         y = Math.sin(start) * amp;
+        const z = Math.abs(Math.cos((start/2)));
+        const r = radius * ( 1 + z * depthAmp );
         yScaler = Math.abs(y) / 600;
         const red = Math.floor(255 - (yScaler * 255));
         const blue = Math.floor(255 * yScaler);
         context.beginPath();
-        context.arc(x, y, 5, 0, Math.PI * 2, false);
+        context.arc(x, y, r, 0, Math.PI * 2, false);
         context.fillStyle = `rgb( ${red} , ${green} , ${blue})`;
         context.fill();
       }

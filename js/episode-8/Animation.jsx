@@ -6,16 +6,16 @@ let frameId = 0;
 
 const times = (n, fn) => {
   const results = [];
-  for (var i = 0; i < n; i++) {
+  for (let i = 0; i < n; i++) {
     results.push(fn(i));
   }
   return results;
-}
+};
 
 export default class Animation extends Component {
   constructor(props) {
     super(props);
-    const num = props.num || 100;
+    const num = 100;
     this.state = {
       particles: this.createParticles(num),
       context: null,
@@ -29,6 +29,10 @@ export default class Animation extends Component {
 
   componentWillUnmount() {
     cancelAnimationFrame(frameId);
+  }
+
+  addMoreParticles(num) {
+    this.setState({ particles: this.createParticles(num) });
   }
 
   createParticles(num) {
@@ -81,12 +85,12 @@ export default class Animation extends Component {
     }
 
     return (
-      <canvas ref="canvas" width={width} height={height} />
+      <canvas
+        ref="canvas"
+        onClick={() => { this.addMoreParticles(200); }}
+        width={width}
+        height={height}
+      />
     );
   }
 }
-
-Animation.propTypes = {
-  amp: PropTypes.number,
-  points: PropTypes.number,
-};

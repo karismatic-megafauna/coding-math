@@ -36,20 +36,29 @@ export default class Animation extends Component {
     return times(num, i => particle.create(
       innerWidth / 2,
       innerHeight / 2,
-      1,
+      3,
       Math.random() * Math.PI * 2
     ));
   }
 
+  updateParticle(particle) {
+    return particle.update() || particle;
+  }
+
   loop() {
     // trigger a re-render
-    this.setState({
-      start: this.state.waveStep,
-    });
-    if ( this.state.particles.length) {
+    const { particles } = this.state;
+    const { innerHeight, innerWidth } = window;
+    const updatedParticles = removeDeadParticles(
+      particles.map(this.updateParticle),
+      innerWidth,
+      innerHeight
+    );
+    if ( updatedParticles.length) {
       frameId = requestAnimationFrame(this.loop.bind(this));
     }
 
+    this.setState({particles: updatedParticles});
   }
 
   render() {
@@ -59,18 +68,14 @@ export default class Animation extends Component {
     const { particles } = this.state;
 
 
+    // Render updated particles on context
     if (context) {
       context.clearRect(0, 0, width, height);
-
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.update();
+      particles.map(p => {
         context.beginPath();
         context.arc(p.position.getX(), p.position.getY(), 10, 0, Math.PI * 2, false);
         context.fill();
-      }
-
-      removeDeadParticles(particles, width, height);
+      });
       context.font = '24px serif';
       context.fillText(`particles on page: ${particles.length}`, 200, 50);
     }

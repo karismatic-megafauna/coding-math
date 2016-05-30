@@ -1,16 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import { particle } from '../particle';
-import { removeDeadParticles } from '../utils';
+import { randomInt, removeDeadParticles } from '../utils';
 let frameId = 0;
 
 const times = (n, fn) => {
   const results = [];
-  const step = Math.PI * 2 / n;
-  let angle = 0;
   for (let i = 0; i < n; i++) {
-    results.push(fn(angle));
-    angle += step;
+    const variance = randomInt(-1, 2);
+    results.push(fn(variance));
   }
   return results;
 };
@@ -41,11 +39,11 @@ export default class Animation extends Component {
 
 
   createParticles(num, x, y) {
-    return times(num, (angle) => particle.create(
+    return times(num, (variance) => particle.create(
       x,
       y,
-      this.props.speed,
-      angle
+      this.props.speed + variance,
+      Math.random() * Math.PI * 2
     ));
   }
 

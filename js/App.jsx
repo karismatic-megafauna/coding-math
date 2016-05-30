@@ -35,7 +35,7 @@ export class App extends Component {
 }
 
 App.propTypes = {
-  activeComponent: PropTypes.string,
+  activeComponent: PropTypes.node,
   componentList: PropTypes.object.isRequired,
 };
 

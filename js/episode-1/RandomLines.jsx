@@ -20,7 +20,7 @@ export class RandomLines extends Component {
 
     if (context) {
       context.clearRect(0, 0, this.refs.canvas.width, this.refs.canvas.height);
-      for (let i = 1; i < 100; i += 1) {
+      for (let i = 1; i < 30; i += 1) {
         context.beginPath();
         context.moveTo(Math.random() * width, Math.random() * height);
         context.lineTo(Math.random() * width, Math.random() * height);

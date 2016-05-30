@@ -13,6 +13,6 @@ export class Board extends Component {
 }
 
 Board.propTypes = {
-  activeComponent: PropTypes.element,
-  componentList: PropTypes.array,
+  activeComponent: PropTypes.node,
+  componentList: PropTypes.object,
 };

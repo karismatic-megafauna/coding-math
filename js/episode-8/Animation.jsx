@@ -6,8 +6,11 @@ let frameId = 0;
 
 const times = (n, fn) => {
   const results = [];
+  const step = Math.PI * 2 / n;
+  let angle = 0;
   for (let i = 0; i < n; i++) {
-    results.push(fn(i));
+    results.push(fn(angle));
+    angle += step;
   }
   return results;
 };
@@ -38,11 +41,11 @@ export default class Animation extends Component {
 
 
   createParticles(num, x, y) {
-    return times(num, () => particle.create(
+    return times(num, (angle) => particle.create(
       x,
       y,
       this.props.speed,
-      Math.random() * Math.PI * 2
+      angle
     ));
   }
 

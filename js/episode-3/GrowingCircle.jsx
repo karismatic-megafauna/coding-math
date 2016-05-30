@@ -22,6 +22,11 @@ export class GrowingCircle extends Component {
             defaultValue={0.5}
             onChange={(e, value) => this.setState({ base: lerp(value, 50, 300)}) }
           />
+          <div> Size </div>
+          <Slider
+            defaultValue={0.5}
+            onChange={(e, value) => this.setState({ base: lerp(value, 50, 300)}) }
+          />
           <div> Speed </div>
           <Slider
             defaultValue={0.5}

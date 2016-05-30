@@ -1,14 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import { particle } from '../particle';
-import { randomInt, removeDeadParticles } from '../utils';
+import { randomRange, removeDeadParticles } from '../utils';
 let frameId = 0;
 
 const times = (n, fn) => {
   const results = [];
   for (let i = 0; i < n; i++) {
-    const variance = randomInt(-1, 2);
-    results.push(fn(variance));
+    const speedVar = randomRange(-1, 2);
+    const sizeVar = randomRange(-1, 2);
+    results.push(fn(speedVar, sizeVar));
   }
   return results;
 };
@@ -17,6 +18,10 @@ export default class Animation extends Component {
   static propTypes = {
     num: PropTypes.number,
     speed: PropTypes.number,
+    speedScalar: PropTypes.number,
+    gravity: PropTypes.number,
+    size: PropTypes.number,
+    sizeScalar: PropTypes.number,
   }
 
   constructor(props) {
@@ -39,11 +44,13 @@ export default class Animation extends Component {
 
 
   createParticles(num, x, y) {
-    return times(num, (variance) => particle.create(
+    return times(num, (speedVar, sizeVar) => particle.create(
       x,
       y,
-      this.props.speed + variance,
-      Math.random() * Math.PI * 2
+      this.props.speed + (speedVar * this.props.speedScalar),
+      Math.random() * Math.PI * 2,
+      this.props.gravity,
+      this.props.size + (sizeVar * this.props.sizeScalar)
     ));
   }
 
@@ -83,17 +90,16 @@ export default class Animation extends Component {
   }
 
   render() {
-    const { ctx } = this.state;
+    const { ctx, particles } = this.state;
     const height = window.innerHeight;
     const width = window.innerWidth;
-    const { particles } = this.state;
 
     // Render updated particles on ctx
     if (ctx) {
       ctx.clearRect(0, 0, width, height);
       particles.map(p => {
         ctx.beginPath();
-        ctx.arc(p.position.getX(), p.position.getY(), 10, 0, Math.PI * 2, false);
+        ctx.arc(p.position.getX(), p.position.getY(), p.radius, 0, Math.PI * 2, false);
         ctx.fill();
       });
       ctx.font = '24px serif';

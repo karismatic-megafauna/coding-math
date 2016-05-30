@@ -10,13 +10,14 @@ export const particle = {
   friction: 1,
   color: null,
 
-  create(x, y, speed, direction, grav) {
+  create(x, y, speed, direction, grav, rad) {
     const obj = Object.create(this);
     obj.position = vector.create(x, y);
     obj.velocity = vector.create(0, 0);
     obj.velocity.setLength(speed);
     obj.velocity.setAngle(direction);
     obj.gravity = vector.create(0, grav || 0);
+    obj.radius = rad || 10;
     return obj;
   },
 

@@ -34,13 +34,9 @@ export class Sidebar extends React.Component {
   render() {
     return (
       <div>
-        <RaisedButton label="Open Sidebar" onClick={this.handleToggle} />
         <LeftNav open={this.state.open}>
           <div id="sidebar" className={styles.sidebar} >
             {Object.keys(this.props.componentList).map((component, i) => this.getComp(component, i))}
-            <span className={styles.close}>
-              <FlatButton label="Close Sidebar" onClick={this.handleToggle} />
-            </span>
           </div>
         </LeftNav>
       </div>

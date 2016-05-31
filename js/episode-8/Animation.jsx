@@ -42,7 +42,6 @@ export default class Animation extends Component {
     cancelAnimationFrame(frameId);
   }
 
-
   createParticles(num, x, y) {
     return times(num, (speedVar, sizeVar) => particle.create(
       x,
@@ -91,12 +90,11 @@ export default class Animation extends Component {
 
   render() {
     const { ctx, particles } = this.state;
-    const height = window.innerHeight;
-    const width = window.innerWidth;
+    const { innerHeight, innerWidth } = window;
 
     // Render updated particles on ctx
     if (ctx) {
-      ctx.clearRect(0, 0, width, height);
+      ctx.clearRect(0, 0, innerWidth, innerHeight);
       particles.map(p => {
         ctx.beginPath();
         ctx.arc(p.position.getX(), p.position.getY(), p.radius, 0, Math.PI * 2, false);
@@ -112,8 +110,8 @@ export default class Animation extends Component {
         onClick={(e) => {
           this.addMoreParticles(this.props.num, e.clientX, e.clientY);
         }}
-        width={width}
-        height={height}
+        width={innerWidth}
+        height={innerHeight}
       />
     );
   }

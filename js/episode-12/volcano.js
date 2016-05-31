@@ -1,26 +1,9 @@
 import { particle } from '../particle';
 
-const switcher = { on: false };
-let frameId;
 export const volcano = {
-  tearDown() {
-    switcher.on = false;
-    cancelAnimationFrame(frameId);
-  },
   setUp() {
-    switcher.on = true;
-    const canvas = document.getElementById('canvas');
-    const context = canvas.getContext('2d');
-    const width = canvas.width = window.innerWidth;
-    const height = canvas.height = window.innerHeight;
-    const particles = [];
 
-    function getUpwardVelocity(node) {
-      return Math.min(0, node.velocity.getY()) * -1;
-    }
-
-    function update() {
-      context.clearRect(0, 0, width, height);
+    function loop() {
 
       if (particles.length < 100) {
         const p = particle.create(
@@ -60,10 +43,10 @@ export const volcano = {
 
       context.font = '24px serif';
       context.fillText(`particles on page: ${particles.length}`, 200, 50);
-      if (switcher.on && particles.length) {
-        frameId = requestAnimationFrame(update);
+      if (particles.length) {
+        frameId = requestAnimationFrame(loop);
       }
     }
-    update();
+    loop();
   },
 };

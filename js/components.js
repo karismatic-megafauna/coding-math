@@ -6,7 +6,7 @@ import { BigBang } from './episode-8/BigBang.jsx';
 // import { ship } from './episode-10/ship';
 // import { orbit } from './episode-11/orbit';
 // import { bounceyBall } from './episode-12/bounceyBall';
-// import { volcano } from './episode-12/volcano';
+import { Volcano } from './episode-12/Volcano.jsx';
 // import { friction } from './episode-13/friction';
 // import { collisionDetection } from './episode-14/collisionDetection';
 // import { springOne, springTwo, springCollision } from './episode-15/springs';
@@ -25,7 +25,7 @@ export default {
   // 'Ship': ship,
   // 'Orbit': orbit,
   // 'Bouncy Ball': bounceyBall,
-  // 'Volcano': volcano,
+  'Infinite Volcano': Volcano,
   // 'Friction': friction,
   // 'Collision Detection': collisionDetection,
   // 'Mouse Spring': springOne,
